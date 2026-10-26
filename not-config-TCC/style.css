@@ -1,0 +1,118 @@
+body {
+    background-color: #676666;
+}
+
+.notificacao {
+    width: 280px;
+    height: 318px;
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: rgba(220, 219, 219, 0.171);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px 12px 12px 12px;
+
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+
+    overflow: hidden;
+    z-index: 9999;
+    box-sizing: border-box;
+}
+
+.notificacao-header {
+    height: 57px;
+    background: #56A69F;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.35);
+
+    display: flex;
+    align-items: center;
+    padding-left: 6px;
+    box-sizing: border-box;
+}
+
+.btn-voltar {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+
+    border: none;
+    outline: none;
+    background: transparent;
+    box-shadow: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.btn-voltar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.notificacao-conteudo {
+    height: calc(100% - 57px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 88px 11px 16px;
+    box-sizing: border-box;
+}
+
+.btn-opcao {
+    width: 100%;
+    height: 53px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    border: 1px solid rgba(218, 212, 212, 0.12);
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.17);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: #000;
+    font-size: 23px;
+    font-weight: 800;
+    font-family: Arial, sans-serif;
+
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn-opcao:active {
+    background: rgba(107, 109, 109, 0.169);
+    transform: scale(0.97);
+}
+
+
+.btn-sair {
+    margin-top: 0;
+}
+
+.icone-sair {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@media (max-width: 350px) {
+    .notificacao {
+        width: calc(100% - 40px);
+    }
+}
