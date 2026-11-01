@@ -370,3 +370,11 @@ body {
     overflow: hidden;
     margin: 0;
 }
+
+.aviso {
+    padding-top: 1rem;
+    color: rgba(110, 107, 107, 0.658) ;
+    margin: 0;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,6 +12,7 @@
     <img src="/img/folha.png" alt="" class="bola1">
 
     <div class="vidro">
+        
         <div class="bloco">
 
             <button class="voltar" onclick="history.back()" type="button">
@@ -24,32 +25,49 @@
                 <p class="dica"> preencha os blocos abaixo com informações da sua conta para continuar</p>
                 <img src="logo.png" alt="">
             </header>
+            <form action="">
 
-            <div class="campo de email">
-                <p class="digitee">Email constitucional</p>
-                <input
-                type="email"
-                name="email"
-                placeholder="Ex:00001234567911sp@al.educacao.sp.gov.br">
-            </div>
+                <div class="campo de email">
+                    <p class="digitee">Nome</p>
+                    <input
+                    type="text"
+                    name="nome"
+                    placeholder="Josicleiton da Silva ">
+                </div>
 
-            <div class="campo de email">
-                <p class="digites">Senha</p>
-                <input 
-                type="password"
-                name="senha"
-                placeholder="digite senha">
-                <a href="/Raiz-Digital-Home/Login/Recuperação senha/index.html" class="recuperar">esqueceu sua senha?</a>
-            </div>
+                <div class="campo de email">
+                    <p class="digitee">Email constitucional</p>
+                    <input
+                    type="email"
+                    name="email"
+                    placeholder="Ex:00001234567911sp@al.educacao.sp.gov.br">
+                </div>
 
+                <div class="campo de email">
+                    <p class="digites">Senha</p>
+                    <input 
+                    type="password"
+                    name="senha"
+                    placeholder="digite senha">
+                </div>
+
+                <div class="campo de email">
+                    <p class="aviso">Opcional</p>
+                    <p class="digites">Contato</p>
+                    <input 
+                    type="number"
+                    name="Contato"
+                    placeholder="Digite seu numero de telefone">
+                </div>
+            </form>
             <div class="divisor">
                 <span></span>
                 <p>OU TENTE</p>
                 <span></span>
             </div>
 
-            <p class="conta">não tem uma conta?
-                            <a href="/Raiz-Digital-Home/Cadastro/index.html" class="cadastro"> cadastre-se agora</a>
+            <p class="conta">já tem uma conta?
+                            <a href="/Raiz-Digital-Home/Login/index.html" class="cadastro"> Faça seu Login aqui!</a>
 
             </p>
 
