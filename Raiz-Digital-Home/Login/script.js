@@ -13,9 +13,9 @@ function novaSenha() {
 };
 
 function login() {
-    window.location.href = "../../Raiz-Digital-Home/login/index.html"
+    window.location.href = "../../../index.html"
 };
 
 function sair() {
-    window.location.href = "../../Raiz-Digital-Home/index.html"
+    window.location.href = "../../index.html"
 };
