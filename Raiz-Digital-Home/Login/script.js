@@ -5,11 +5,11 @@ function voltarPagina() {
 };
 
 function receberCodigo() {
-    window.location.href = "../../Raiz-Digital-Home/login/recuperação senha/receber-código/index.html"
+    window.location.href = "./Recuperação senha/receber-código/index.html"
 };
 
 function novaSenha() {
-    window.location.href = "../../Raiz-Digital-Home/login/recuperação senha/receber-código/nova-senha/index.html"
+    window.location.href = "./receber-código/nova-senha/index.html"
 };
 
 function login() {
