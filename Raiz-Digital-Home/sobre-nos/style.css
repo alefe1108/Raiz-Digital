@@ -1,5 +1,5 @@
 body { 
-    background-image: url(/img/fundo.png);
+    background-image: url(../img/fundo.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -229,7 +229,7 @@ header nav a {
 
     border-radius: 50%;
 
-    background-image: url("/img/Alefe foto.jpeg");
+    background-image: url("../img/Alefe foto.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -297,7 +297,7 @@ header nav a {
     box-sizing: border-box;
     border-radius: 100px;
     background-color: #0b0e0a;
-    background-image: url("/img/Pedro\ foto.jpeg");
+    background-image: url("../img/Pedro\ foto.jpeg");
 }
 
 .adms-sam {
@@ -397,7 +397,7 @@ header nav a {
 
     border-radius: 50%;
 
-    background-image: url("/img/Victor foto.jpeg");
+    background-image: url("../img/Victor foto.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
