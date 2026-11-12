@@ -17,5 +17,5 @@ function login() {
 };
 
 function sair() {
-    window.location.href = "../../../"
+    window.location.href = "../"
 };

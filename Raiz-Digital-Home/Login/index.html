@@ -24,23 +24,35 @@
                 <p class="dica"> preencha os blocos abaixo com informações.</p>
                 <img src="../../img/logo.png" alt="">
             </header>
+            
+            <!-- Formulário de login -->
+            <form id="formLogin" action="logar.php" method="POST" novalidate>
 
-            <div class="campo de email">
-                <p class="digitee">Email constitucional</p>
-                <input
-                type="email"
-                name="email"
-                placeholder="Ex:00001234567911sp@al.educacao.sp.gov.br">
-            </div>
+                <div class="campo de email">
+                    <p class="digitee">Email constitucional</p>
+                    <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Ex:00001234567911sp@al.educacao.sp.gov.br"
+                    required>
+                </div>
 
-            <div class="campo de email">
-                <p class="digites">Senha</p>
-                <input 
-                type="password"
-                name="senha"
-                placeholder="digite senha">
-                <a href="./Recuperação senha/index.html" class="recuperar">esqueceu sua senha?</a>
-            </div>
+                <div class="campo de email">
+                    <p class="digites">Senha</p>
+                    <input
+                    type="password"
+                    name="senha"
+                    id="senha"
+                    placeholder="digite sua senha"
+                    required>
+                    <a href="./Recuperação senha/index.html" class="recuperar">esqueceu sua senha?</a>
+                </div>
+
+                <!-- Área para mensagens -->
+                <div id="mensagem" style="margin: 10px 0; min-height: 20px;"></div>
+
+            </form>
 
             <div class="divisor">
                 <span></span>

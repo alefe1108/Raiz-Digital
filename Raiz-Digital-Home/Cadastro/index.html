@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- vou ter que mexer nele ainda para transformar em formulario e tals -->
+    
     <img src="../../img/folha.png" alt="" class="bola1">
 
     <div class="vidro">
@@ -25,41 +24,59 @@
                 <p class="dica"> preencha os blocos abaixo com informações da sua conta para continuar</p>
                 <img src="../../img/logo.png" alt="">
             </header>
-            <form action="">
+            <form method="POST" action="cadastro.php">
 
                 <div class="campo de email">
-                    <p class="digitee">Nome</p>
+                    <label for="nome" class="digitee">Nome</label>
                     <input
+                    id="nome"
                     type="text"
                     name="nome"
                     placeholder="Josicleiton da Silva ">
                 </div>
 
                 <div class="campo de email">
-                    <p class="digitee">Email constitucional</p>
+                    <label for="email" class="digitee">Email constitucional</label>
                     <input
+                    id="email"
                     type="email"
                     name="email"
                     placeholder="Ex:00001234567911sp@al.educacao.sp.gov.br">
                 </div>
 
                 <div class="campo de email">
-                    <p class="digites">Senha</p>
+                    <label for="senha" class="digites">Senha</label>
                     <input 
+                    id="senha"
                     type="password"
                     name="senha"
                     placeholder="digite senha">
                 </div>
 
                 <div class="campo de email">
-                    <p class="aviso">Opcional</p>
-                    <p class="digites">Contato</p>
+                    <label for="ConfirmaSenha" class="digites">Confirmar Senha</label>
                     <input 
+                    type="password"
+                    id="ConfirmaSenha"
+                    name="ConfirmaSenha"
+                    placeholder="digite senha">
+                </div>
+
+                <div class="campo de email">
+                    <p class="aviso">Opcional</p>
+                    <label for="Contato" class="digites">Contato</label>
+                    <input
+                    id="Contato"
                     type="number"
                     name="Contato"
                     placeholder="Digite seu numero de telefone">
                 </div>
+
+                <button type="submit" class="botao" value="Cadastrar">
+                    Cadastrar-se
+                </button>
             </form>
+            
             <div class="divisor">
                 <span></span>
                 <p>OU TENTE</p>
@@ -67,13 +84,8 @@
             </div>
 
             <p class="conta">já tem uma conta?
-                            <a href="../Login/index.html" class="cadastro"> Faça seu Login aqui!</a>
-
+                <a href="../Login/index.html" class="cadastro"> Faça seu Login aqui!</a>
             </p>
-
-            <button type="button" class="botao">
-                Entrar
-            </button>
 
             <img src="../../img/agua.png" alt="" class="agua">
 
