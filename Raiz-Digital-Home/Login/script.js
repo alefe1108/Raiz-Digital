@@ -67,3 +67,40 @@ if (formLogin) {
 if (botaoEntrar) {
     botaoEntrar.addEventListener("click", fazerLogin);
 }
+
+//codigo secreto para erro de conexão
+const codigoSecreto = [
+    "ArrowUp",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowLeft",
+    "ArrowRight",
+    "b",
+    "a"
+];
+
+let progresso = 0;
+
+document.addEventListener("keydown", function(event) {
+
+    const tecla = event.key.length === 1
+        ? event.key.toLowerCase()
+        : event.key;
+
+    if (tecla === codigoSecreto[progresso]) {
+
+        progresso++;
+
+        if (progresso === codigoSecreto.length) {
+            window.location.href = "../../Home/Logado/index.html";
+        }
+
+    } else {
+        // Se errar, verifica se a tecla pode iniciar novamente
+        progresso = tecla === codigoSecreto[0] ? 1 : 0;
+    }
+
+});
