@@ -140,7 +140,8 @@ async function handleQR(value) {
     location.href = url.href
 }
 document.querySelector('#logoutBtn')?.addEventListener('click', () => {
-    alert('Para sair da conta de verdade, conecte este botão ao sistema de login do projeto. Nenhuma sessão foi encerrada.');
+    window.location.href = "../../Raiz-Digital-Home/index.html";
+    // alert('Para sair da conta de verdade, conecte este botão ao sistema de login do projeto. Nenhuma sessão foi encerrada.');
 });
 
 // Atualiza o avatar do cabeçalho usando a foto salva neste navegador.
