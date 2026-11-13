@@ -194,3 +194,41 @@ if (heroVideos.length) {
     showHeroVideo(0);
 }
 
+// -----------------------------------------------------
+// script do cadastro do netlify
+// -----------------------------------------------------
+// 
+
+const form = document.getElementById("formCadastro");
+const mensagem = document.getElementById("mensagem");
+
+function mostrar(texto, ok) {
+    mensagem.textContent = texto;
+    mensagem.style.color = ok ? "green" : "red";
+}
+
+form.addEventListener("submit", async (evento) => {
+    evento.preventDefault();
+    mostrar("Cadastrando...", true);
+
+    try {
+        const resposta = await fetch("/api/cadastro", {
+            method: "POST",
+            body: new FormData(form),
+        });
+        const dados = await resposta.json();
+
+        if (resposta.ok) {
+            mostrar(dados.mensagem || "Cadastro realizado com sucesso!", true);
+            form.reset();
+            setTimeout(() => {
+                window.location.href = "../Login/index.html";
+            }, 1500);
+        } else {
+            mostrar(dados.erro || "Não foi possível cadastrar.", false);
+        }
+    } catch (erro) {
+        console.error(erro);
+        mostrar("Erro de conexão. Tente novamente.", false);
+    }
+});

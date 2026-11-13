@@ -827,28 +827,141 @@ footer p {
 }
 
 /* Edição de foto: recorte circular e ajuste de zoom */
-.profile-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; }
-.profile-actions .primary-btn { margin-top: 16px; }
-.clear-btn { border: 0; background: transparent; color: #b32b2b; font-size: 14px; font-weight: 700; padding: 12px 14px; margin-top: 16px; border-radius: 10px; }
-.clear-btn:hover { background: #fff0f0; }
-.profile-edit-photo { display: flex; align-items: center; justify-content: center; padding: 0; }
-.profile-edit-photo svg { display: block; flex-shrink: 0; }
-.crop-dialog { width: min(100%, 450px); }
-.crop-stage { width: min(100%, 320px); aspect-ratio: 1; margin: 18px auto; position: relative; overflow: hidden; background: #e8efe9; border-radius: 12px; touch-action: none; cursor: grab; user-select: none; }
-.crop-stage:active { cursor: grabbing; }
-.crop-stage canvas { width: 100%; height: 100%; display: block; }
-.crop-circle { pointer-events: none; position: absolute; inset: 0; border: 3px solid #70c66c; border-radius: 50%; box-shadow: 0 0 0 150px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,255,255,.7); }
-.zoom-label { display: flex !important; justify-content: space-between; margin: 15px 0 7px !important; font-size: 13px; font-weight: 700; }
-.zoom-slider { width: 100%; accent-color: #4b8b43; cursor: pointer; }
-.crop-actions { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 15px; }
-.crop-actions .primary-btn { margin-top: 0; }
-.crop-actions .secondary-btn { margin-top: 0; }
+.profile-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.profile-actions .primary-btn {
+    margin-top: 16px;
+}
+
+.clear-btn {
+    border: 0;
+    background: transparent;
+    color: #b32b2b;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 12px 14px;
+    margin-top: 16px;
+    border-radius: 10px;
+}
+
+.clear-btn:hover {
+    background: #fff0f0;
+}
+
+.profile-edit-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.profile-edit-photo svg {
+    display: block;
+    flex-shrink: 0;
+}
+
+.crop-dialog {
+    width: min(100%, 450px);
+}
+
+.crop-stage {
+    width: min(100%, 320px);
+    aspect-ratio: 1;
+    margin: 18px auto;
+    position: relative;
+    overflow: hidden;
+    background: #e8efe9;
+    border-radius: 12px;
+    touch-action: none;
+    cursor: grab;
+    user-select: none;
+}
+
+.crop-stage:active {
+    cursor: grabbing;
+}
+
+.crop-stage canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.crop-circle {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border: 3px solid #70c66c;
+    border-radius: 50%;
+    box-shadow: 0 0 0 150px rgba(0, 0, 0, .38), inset 0 0 0 1px rgba(255, 255, 255, .7);
+}
+
+.zoom-label {
+    display: flex !important;
+    justify-content: space-between;
+    margin: 15px 0 7px !important;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.zoom-slider {
+    width: 100%;
+    accent-color: #4b8b43;
+    cursor: pointer;
+}
+
+.crop-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.crop-actions .primary-btn {
+    margin-top: 0;
+}
+
+.crop-actions .secondary-btn {
+    margin-top: 0;
+}
 
 /* Foto de perfil no canto superior direito */
-.avatar { overflow: hidden; padding: 0; }
-.avatar .nav-profile-photo { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
-.avatar .nav-profile-photo[hidden] { display: none; }
-.avatar.has-photo svg { display: none; }
+.avatar {
+    overflow: hidden;
+    padding: 0;
+}
+
+.avatar .nav-profile-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.avatar .nav-profile-photo[hidden] {
+    display: none;
+}
+
+.avatar.has-photo svg {
+    display: none;
+}
+
 /* Botões e editor da página Meu Perfil */
-.profile-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.profile-actions .primary-btn { margin-top: 16px; }
+.profile-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.profile-actions .primary-btn {
+    margin-top: 16px;
+}
