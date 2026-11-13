@@ -47,7 +47,7 @@ async function fazerLogin() {
         if (resposta.ok) {
             mostrarMensagem(dados.mensagem || "Login realizado!", true);
 
-            window.location.href = "inicio.html";
+            window.location.href = "../../Home/Logado/index.html";
         } else {
             mostrarMensagem(dados.erro || "Não foi possível entrar.", false);
         }
