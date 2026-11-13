@@ -21,7 +21,54 @@ function sair() {
 };
 
 
-// login conectado ao banco de dados
+// // login conectado ao banco de dados
+
+// const formLogin = document.getElementById("formLogin");
+// const areaMensagem = document.getElementById("mensagem");
+// const botaoEntrar = document.querySelector(".botao");
+
+// function mostrarMensagem(texto, ok) {
+//     if (!areaMensagem) return;
+//     areaMensagem.textContent = texto;
+//     areaMensagem.style.color = ok ? "green" : "red";
+// }
+
+// async function fazerLogin() {
+//     if (!formLogin) return;
+//     mostrarMensagem("Entrando...", true);
+
+//     try {
+//         const resposta = await fetch("/api/login", {
+//             method: "POST",
+//             body: new FormData(formLogin),
+//         });
+//         const dados = await resposta.json();
+
+//         if (resposta.ok) {
+//             mostrarMensagem(dados.mensagem || "Login realizado!", true);
+
+//             window.location.href = "../../Home/Logado/index.html";
+//         } else {
+//             mostrarMensagem(dados.erro || "Não foi possível entrar.", false);
+//         }
+//     } catch (erro) {
+//         console.error(erro);
+//         mostrarMensagem("Erro de conexão. Tente novamente.", false);
+//     }
+// }
+
+// if (formLogin) {
+//     formLogin.addEventListener("submit", (evento) => {
+//         evento.preventDefault();
+//         fazerLogin();
+//     });
+// }
+
+// if (botaoEntrar) {
+//     botaoEntrar.addEventListener("click", fazerLogin);
+// }
+
+// login conectado ao localStorage (demo)
 
 const formLogin = document.getElementById("formLogin");
 const areaMensagem = document.getElementById("mensagem");
@@ -33,27 +80,34 @@ function mostrarMensagem(texto, ok) {
     areaMensagem.style.color = ok ? "green" : "red";
 }
 
-async function fazerLogin() {
+function fazerLogin() {
     if (!formLogin) return;
     mostrarMensagem("Entrando...", true);
 
     try {
-        const resposta = await fetch("/api/login", {
-            method: "POST",
-            body: new FormData(formLogin),
-        });
-        const dados = await resposta.json();
+        const usuarios = JSON.parse(localStorage.getItem("raizDigitalUsuarios") || "[]");
+        const email = formLogin.email.value;
+        const senha = formLogin.senha.value;
 
-        if (resposta.ok) {
-            mostrarMensagem(dados.mensagem || "Login realizado!", true);
+        const usuario = usuarios.find(u => u.email === email && u.senha === senha);
 
-            window.location.href = "../../Home/Logado/index.html";
+        if (usuario) {
+            // Salva sessão simples
+            localStorage.setItem("raizDigitalUsuarioAtual", JSON.stringify({
+                nome: usuario.nome,
+                email: usuario.email
+            }));
+
+            mostrarMensagem("Login realizado!", true);
+            setTimeout(() => {
+                window.location.href = "../../Home/Logado/index.html";
+            }, 1000);
         } else {
-            mostrarMensagem(dados.erro || "Não foi possível entrar.", false);
+            mostrarMensagem("E-mail ou senha incorretos.", false);
         }
     } catch (erro) {
         console.error(erro);
-        mostrarMensagem("Erro de conexão. Tente novamente.", false);
+        mostrarMensagem("Erro ao fazer login. Tente novamente.", false);
     }
 }
 

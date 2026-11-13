@@ -199,36 +199,104 @@ if (heroVideos.length) {
 // -----------------------------------------------------
 // 
 
+// const form = document.getElementById("formCadastro");
+// const mensagem = document.getElementById("mensagem");
+
+// function mostrar(texto, ok) {
+//     mensagem.textContent = texto;
+//     mensagem.style.color = ok ? "green" : "red";
+// }
+
+// form.addEventListener("submit", async (evento) => {
+//     evento.preventDefault();
+//     mostrar("Cadastrando...", true);
+
+    // try {
+    //     const resposta = await fetch("/api/cadastro", {
+    //         method: "POST",
+    //         body: new FormData(form),
+    //     });
+    //     const dados = await resposta.json();
+
+    //     if (resposta.ok) {
+    //         mostrar(dados.mensagem || "Cadastro realizado com sucesso!", true);
+    //         form.reset();
+    //         setTimeout(() => {
+    //             window.location.href = "../Login/index.html";
+    //         }, 1500);
+    //     } else {
+    //         mostrar(dados.erro || "Não foi possível cadastrar.", false);
+    //     }
+    // } catch (erro) {
+    //     console.error(erro);
+    //     mostrar("Erro de conexão. Tente novamente.", false);
+    // }
+
+// simulação de cadastro sem banco
+
 const form = document.getElementById("formCadastro");
 const mensagem = document.getElementById("mensagem");
 
 function mostrar(texto, ok) {
+    if (!mensagem) return;
     mensagem.textContent = texto;
     mensagem.style.color = ok ? "green" : "red";
 }
 
+function validarSenhas(senha, confirmaSenha) {
+    if (senha !== confirmaSenha) {
+        return "As senhas não coincidem.";
+    }
+    if (senha.length < 6) {
+        return "A senha deve ter pelo menos 6 caracteres.";
+    }
+    return null;
+}
+
 form.addEventListener("submit", async (evento) => {
     evento.preventDefault();
+
+    const senha = form.senha.value;
+    const confirmaSenha = form.ConfirmaSenha.value;
+
+    const erroSenha = validarSenhas(senha, confirmaSenha);
+    if (erroSenha) {
+        mostrar(erroSenha, false);
+        return;
+    }
+
     mostrar("Cadastrando...", true);
 
     try {
-        const resposta = await fetch("/api/cadastro", {
-            method: "POST",
-            body: new FormData(form),
-        });
-        const dados = await resposta.json();
+        // Simula cadastro com localStorage (já que /api/cadastro não existe em site estático)
+        const usuarios = JSON.parse(localStorage.getItem("raizDigitalUsuarios") || "[]");
 
-        if (resposta.ok) {
-            mostrar(dados.mensagem || "Cadastro realizado com sucesso!", true);
-            form.reset();
-            setTimeout(() => {
-                window.location.href = "../Login/index.html";
-            }, 1500);
-        } else {
-            mostrar(dados.erro || "Não foi possível cadastrar.", false);
+        // Verifica se email já existe
+        if (usuarios.some(u => u.email === form.email.value)) {
+            mostrar("Este e-mail já está cadastrado.", false);
+            return;
         }
+
+        // Salva novo usuário (sem a senha em texto plano em produção!)
+        const novoUsuario = {
+            nome: form.nome.value,
+            email: form.email.value,
+            senha: senha, // Em produção, usar hash!
+            contato: form.Contato.value,
+            dataCadastro: new Date().toISOString()
+        };
+
+        usuarios.push(novoUsuario);
+        localStorage.setItem("raizDigitalUsuarios", JSON.stringify(usuarios));
+
+        mostrar("Cadastro realizado com sucesso!", true);
+        form.reset();
+        setTimeout(() => {
+            window.location.href = "../Login/index.html";
+        }, 1500);
+
     } catch (erro) {
         console.error(erro);
-        mostrar("Erro de conexão. Tente novamente.", false);
+        mostrar("Erro ao cadastrar. Tente novamente.", false);
     }
 });
