@@ -32,7 +32,7 @@ if (tree) {
     document.querySelector('#treeScientific').textContent = tree.cientifico;
     document.querySelector('#treeDescription').textContent = tree.descricao;
     const photo = document.querySelector('#treePhoto');
-    photo.src = 'img/' + tree.foto;
+    photo.src = '../img/' + tree.foto;
     photo.alt = 'Foto da ' + tree.nome
 } else {
     document.querySelector('#treeName').textContent = 'Árvore não encontrada';
