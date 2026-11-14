@@ -79,7 +79,7 @@ header {
     transform: translateY(-50%);
     z-index: 999;
 
-    width: 54%;
+    width: 62%;
     height: 680px;
 
     display: flex;
@@ -101,7 +101,7 @@ header {
     transform: translateY(-50%);
     z-index: 1000;
 
-    width: 52%;
+    width: 60%;
     height: 640px;
 
     display: flex;
@@ -124,8 +124,8 @@ header {
 
 .foto {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 40px;
+    right: 40px;
 
     display: flex;
     justify-content: flex-end;
@@ -136,27 +136,43 @@ header {
 .foto img {
     width: auto;
     height: 285px;
+    width: 300px;
     border-radius: 30px;
 }
 
-.aceloreira {
+.folha{
+    top: 9%;
     position: absolute;
-    top: 20px;
-    left: 40px;
-
-    width: 45%;
-    text-align: left;
+    left: 87%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: auto;
+    transform: translateY(-50%);
+    z-index: 1000;
 }
 
-.cuidados {
-    position: absolute;
-    top: 46%;
-    left: 6%;
-
-    width: 35%;
-    text-align:left;
+.folha img{
+    height: 180px;
+    width: auto;
 }
 
+.folha1{
+    top: 54%;
+    position: absolute;
+    left: 56%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: auto;
+    transform: translateY(-50%);
+    z-index: 1001;
+}
+
+.folha1 img{
+    height: 320px;
+    width: auto;
+}
 
 .escolher {
     position: fixed;
@@ -215,6 +231,61 @@ header {
     border-radius: 35px;
 
 }
+.tipuaneira {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+
+    width: 45%;
+    text-align: left;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #101d0442;
+    margin: 20px 0;
+}
+
+.cuidados {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 55px;
+
+    margin-top: 550px;
+}
+
+.card-cuidado {
+    background-color: #CCE9C7;
+    padding: 2px;
+    border-radius: 15px;
+}
+
+.card-cuidado h3 {
+    margin-top: 0;
+    color: #315532;
+}
+
+.card-cuidado p {
+    color: #081b02;
+}
+
+.card-cuidado svg {
+    stroke: #426047;
+}
+
+.tipuaneira p{
+    color: #081b02;
+}
+
+.tipuaneira h1 {
+    color: #021d03;
+}
+
+.tipuaneira h3{
+    margin-top: 0px;
+    color: #426047;
+}
 
 .tipuan {
     position: absolute;
@@ -237,7 +308,7 @@ header {
     position: absolute;
     top: 2%;
     left: 60%;
-
+    font-weight: 600;
     width: 45%;
     text-align: left;
 }
@@ -263,7 +334,7 @@ header {
     position: absolute;
     top: 18%;
     left: 60%;
-
+    font-weight: 600;
     width: 45%;
     text-align: left;
 }
@@ -289,7 +360,7 @@ header {
     position: absolute;
     top: 34%;
     left: 60%;
-
+    font-weight: 600;
     width: 45%;
     text-align: left;
 }
@@ -315,7 +386,7 @@ header {
     position: absolute;
     top: 50%;
     left: 60%;
-
+    font-weight: 600;
     width: 45%;
     text-align: left;
 }
@@ -341,7 +412,7 @@ header {
     position: absolute;
     top: 66%;
     left: 60%;
-
+    font-weight: 600;
     width: 45%;
     text-align: left;
 }
@@ -367,7 +438,7 @@ header {
     position: absolute;
     top: 82%;
     left: 60%;
-
+    font-weight: 600;
     width: 45%;
     text-align: left;
 }
@@ -386,6 +457,15 @@ header {
     transition: background-color 0.3s ease;
     color: #334422;
 }
+
+.planta-ativa {
+    background-color: #92C361;
+    width: 280px;
+    height: 90px;
+    padding: 05px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
 .des-ti,
 .des-pf,
 .des-ba,
@@ -396,6 +476,21 @@ header {
     background-color 0.1s ease-in-out,
     width 0.4s ease-in-out,
     height 0.4s ease-in-out;
+}
+
+.des-ti,
+.des-pf,
+.des-ba,
+.des-ma,
+.des-ja,
+.des-pi,
+.tipuan,
+.pau-ferro,
+.banana,
+.manga,
+.jaca,
+.pitanga {
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -415,37 +510,33 @@ header {
     }
 
     .escolher {
-        top: 52%;
-        right: 65%;
+        top: 55%;
+        right: auto;
+        left: 2%;
         transform: translateY(-50%);
-        width: 45%;
-        height: 500px;
+
+        width: 35%;
+        height: 600px;
         padding: 0 5px;
     }
 
-    .bloco1 {
-        top: 51%;
-        right: 2%;
-        transform: translateY(-50%);
-        width: 60%;
-        height: 480px;
-        padding: 10px;
-    }
-    }
-
-    .vidro1 {
-        top: 51%;
-        right: 0%;
-        width: 65%;
-        height: 500px;
+    .tipuan,
+    .pau-ferro,
+    .banana,
+    .manga,
+    .jaca,
+    .pitanga {
+        left: 18px;
+        right: auto;
+        width: 35%;
     }
 
-    .vidro2 {
-        top: 52%;
-        right: 61%;
-        width: 47%;
-        height: 520px;
-    }
+    .tipuan { top: 1%; }
+    .pau-ferro { top: 17%; }
+    .banana { top: 33%; }
+    .manga { top: 49%; }
+    .jaca { top: 65%; }
+    .pitanga { top: 81%; }
 
     .tipuan img,
     .pau-ferro img,
@@ -453,9 +544,10 @@ header {
     .manga img,
     .jaca img,
     .pitanga img {
-        width: 55px;
-        height: 55px;
+        width: 65px;
+        height: 65px;
         border-radius: 12px;
+        object-fit: cover;
     }
 
     .des-ti,
@@ -465,77 +557,155 @@ header {
     .des-ja,
     .des-pi {
         left: 55%;
-        font-size: 10px;
         width: 42%;
+        font-size: 10px;
     }
+
+    .des-ti { top: 2%; }
+    .des-pf { top: 18%; }
+    .des-ba { top: 34%; }
+    .des-ma { top: 50%; }
+    .des-ja { top: 66%; }
+    .des-pi { top: 82%; }
 
     .des-ti:hover,
     .des-pf:hover,
     .des-ba:hover,
     .des-ma:hover,
     .des-ja:hover,
-    .des-pi:hover {
-        width: 40%;
-        height: 45px;
+    .des-pi:hover,
+    .planta-ativa {
+        width: 42%;
+        height: auto;
         padding: 5px;
     }
 
+    .bloco1 {
+        top: 55%;
+        right: 2%;
+        transform: translateY(-50%);
+
+        width: 59%;
+        height: 596px;
+        padding: 10px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .bloco1::-webkit-scrollbar {
+    width: 6px;
+    }
+
+    .bloco1::-webkit-scrollbar-thumb {
+    background-color: #92C361;
+    border-radius: 10px;
+    }
+
+    .bloco1::-webkit-scrollbar-track {
+    background-color: #F2FFEF;
+    }
+
     .foto {
+        position: absolute;
         top: 10px;
-        left: 10px;
+        right: 10px;
+        left: auto;
+        width: auto;
     }
 
     .foto img {
-        height: 110px;
-        max-width: 100%;
+        width: 130px;
+        max-width: 150px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 20px;
     }
 
-    .tipuan {
-        top: 10px;
-        left: 15px;
+    .tipuaneira {
+        position: absolute;
+        top: -270px;
+        left: 1px;
         width: 45%;
-        font-size: 10px;
+        text-align: left;
+    };
+
+    .tipuaneira h1 {
+        font-size: 19px;
+        margin: 0 0 5px 0;
     }
 
-    .pau-ferro {
-        top: 90px;
-        left: 15px;
-        width: 45%;
-        font-size: 10px;
+    .tipuaneira h3 {
+        font-size: 13px;
+        margin: 0 0 8px 0;
     }
 
-    .banana {
-        top: 34%;
-        left: 15px;
-        width: 45%;
-        font-size: 10px;
+    .tipuaneira p {
+        font-size: 11px;
+        line-height: 1.4;
+        margin: 0;
     }
 
-    .manga {
-        top: 50%;
-        left: 15px;
-        width: 45%;
-        font-size: 10px;
+     
+    .folha{
+        top: 3%;
+        position: absolute;
+        left: 86%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        width: auto;
+        transform: translateY(-50%);
+        z-index: 1000;
     }
 
-    .jaca {
-        top: 66%;
-        left: 15px;
-        width: 45%;
-        font-size: 10px;
+    .folha img{
+        height: 80px;
+        width: auto;
     }
 
-    .pitanga {
-        top: 82%;
-        left: 15px;
-        width: 45%;
-        font-size: 10px;
+    .folha1{
+        top: 25%;
+        position: absolute;
+        left: 52%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        width: auto;
+        transform: translateY(-50%);
+        z-index: 1001;
+    }
+
+    .folha1 img{
+        height: 140px;
+        width: auto;
     }
 
     .cuidados {
-        top: 40%;
-        left: 5%;
-        width: 90%;
-        font-size: 16px;
+        position: relative;
+        top: auto;
+        left: auto;
+
+        width: 100%;
+        margin-top: 290px;
+
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+
+        font-size: 12px;
+    }
+
+    .card-cuidado {
+        padding: 9px;
+    }
+
+    .card-cuidado h3 {
+        font-size: 12px;
+    }
+
+    .card-cuidado p {
+        font-size: 11px;
+        line-height: 1.5;
     }
 }
