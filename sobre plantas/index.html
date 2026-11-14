@@ -5,103 +5,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plantas</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
     <header class="card">
-        <button onclick="window.location.href='../Raiz-Digital-Home/index.html'" class="voltar">
-            <img src="../img/btnVoltar.png" alt="">
+        <button class="voltar" onclick="history.back()">
+            <img src="btnVoltar.png" alt="voltar">
         </button>
         <h1>PLANTAS 
         <br>
-        DISPONÍVES</h1>
+            DISPONÍVES
+        </h1>
     </header>
-
     <div class="vidro1"></div>
     <div class="bloco1">
-        <div class="foto">
-            <img src="../img/lock.png" alt="">
+        <div class="folha1">
+            <img src="folha.png" alt="">
         </div>
+        <div class="folha">
+            <img src="folha.png" alt="">
+        </div>
+            <div class="foto">
+                <img id="planta-foto" src="arvore-01" alt="Tipuana">
+            </div>
+        <div class="cuidados">
 
-        <div class="aceloreira">
-        <h1>TIPUANA</h1>
-        <p>Tipuana (Tipuana tipu) no Brasil está profundamente ligada à urbanização,<br>
-             ao planejamento das grandes metrópoles <br>
-              no século XX e até ao nascimento <br>
-               do movimento ambientalista nacional.<br> 
+            <div class="tipuaneira">
+                <h1 id="planta-titulo">TIPUANA</h1>
+                    <h3 id="planta-cientifico">TIPUANA TIPU</h3>
+                <p id="planta-descricao">Tipuana no Brasil está profundamente ligada à urbanização,<br>
+                ao planejamento das grandes metrópoles <br>
+                no século XX(20) e até ao nascimento <br>
+                do movimento ambientalista nacional.<br> 
                 Abaixo está a cronologia de como essa <br>
-                 espécie exótica se transformou em um<br>
-                     símbolo das ruas brasileiras</p>
-    </div>
+                espécie exótica se transformou em um<br>
+                símbolo das ruas brasileiras</p>
+                <hr>
+            </div>
+            <div class="card-cuidado">
+                <i data-lucide="sprout"></i>
+                <h3>ADUBAÇÃO</h3>
+                <p id="planta-adubacao">Adube 2 a 3 vezes por ano, principalmente enquanto estiver crescendo.</p>
+            </div>
 
-    <div class="cuidados">
-        <h1>HISTÓRIA</h1>
-        <p>
-            Nativa das florestas subtropicais e temperadas do norte da Argentina e da Bolívia, a árvore já chamava a atenção por sua resiliência e imponência. Curiosamente, estudos de botânicos mostram que a Tipuana se adaptou tão bem ao solo e clima brasileiros que ela costuma crescer mais rápido e atingir portes maiores no Brasil do que em sua própria terra natal.
-            <br>
+            <div class="card-cuidado">
+            <i data-lucide="scissors"></i>
+            <h3>PODA</h3>
+                <p id="planta-poda">Retire galhos secos e doentes.
+                Faça podas de formação quando necessário.
+                Evite podas muito fortes.</p>
+            </div>
 
-            <H1>CUIDADOS</H1>
+            <div class="card-cuidado">
+                <i data-lucide="droplets"></i>
+                <h3>IRRIGAÇÃO</h3>
+                <p id="planta-irrigacao">A Tipuana necessita de regas frequentes durante sua fase inicial de crescimento, mantendo o solo úmido. Quando adulta e bem estabelecida, apresenta boa resistência a períodos de seca, não exigindo irrigação constante.</p>
+            </div>
 
-            <H3>ADUBAÇÃO</H3>
-            Adube 2 a 3 vezes por ano, principalmente enquanto estiver crescendo.
-
-            <H3>PODA</H3>
-            Retire galhos secos e doentes.
-            Faça podas de formação quando necessário.
-            Evite podas muito fortes.
-
-            <H3>CRESCIMENTO</H3>
-            Cresce bastante e pode atingir mais de 20 metros.
-            Plante longe de muros, calçadas, encanamentos e construções, pois suas raízes podem causar problemas.
-        </p>
-    </div>
+            <div class="card-cuidado">
+                <i data-lucide="sun"></i>
+                <h3>LUMINOSIDADE</h3>
+                <p id="planta-luminosidade">A Tipuana se desenvolve melhor em ambientes com sol pleno, necessitando de luz solar direta por várias horas ao dia. Prefere espaços abertos, onde possa crescer e desenvolver sua copa amplamente.
+                </p>
+            </div>
         
-    </div>
+        </div>
+    </div> 
     <div class="vidro2"></div>
     <div class="escolher">
         
-            <div class="tipuan">
-                <img src="../img/Tipuana_tipu.jpg" alt="">
-            </div>
-            <div class="des-ti">
-                <P>TIPUANA</P>
-            </div>
-
-        <div class="pau-ferro">
-            <img src="../img/lock.png" alt="">
+        <div class="tipuan" data-planta="tipuana">
+            <img src="arvore-06-tipuana.jpg" alt="">
         </div>
-        <div class="des-pf">
-                <P>PAU-FERRO</P>
-            </div>
-
-        <div class="banana">
-            <img src="../img/lock.png" alt="">
+        <div class="des-ti nome-planta" data-planta="tipuana">
+            <P>TIPUANA</P>
         </div>
-        <div class="des-ba">
-                <P>BANANA</P>
-            </div>
 
-        <div class="manga">
-            <img src="../img/lock.png" alt="">
+        <div class="pau-ferro" data-planta="pau-ferro">
+            <img src="arvore-02-sibipiruna.jpg" alt="">
         </div>
-        <div class="des-ma">
-                <P>MANGA</P>
-            </div>
+        <div class="des-pf nome-planta" data-planta="pau-ferro">
+            <P>PAU-FERRO</P>
+        </div>
 
-        <div class="jaca">
-            <img src="../img/lock.png" alt="">
+        <div class="banana" data-planta="banana">
+            <img src="arvore-03-bananeira.jpg" alt="">
         </div>
-        <div class="des-ja">
-                <P>JACA</P>
-            </div>
+        <div class="des-ba nome-planta" data-planta="banana">
+            <P>BANANA</P>
+        </div>
 
-        <div class="pitanga">
-            <img src="../img/arvore-01-pitanga.jpg" alt="">
+        <div class="manga" data-planta="manga">
+            <img src="arvore-04-mangueira.jpg" alt="">
         </div>
-        <div class="des-pi">
-                <P>PITANGA</P>
-            </div>
+        <div class="des-ma nome-planta" data-planta="manga">
+            <P>MANGA</P>
+        </div>
+
+        <div class="jaca" data-planta="jaca">
+            <img src="arvore-05-jaca.jpg" alt="">
+        </div>
+        <div class="des-ja nome-planta" data-planta="jaca">
+            <P>JACA</P>
+        </div>
+
+        <div class="pitanga" data-planta="pitanga">
+            <img src="arvore-01-aceroleira.jpg" alt="">
+        </div>
+        <div class="des-pi nome-planta" data-planta="pitanga">
+            <P>PITANGA</P>
+        </div>
         
     </div>
+
+    <script>
+    lucide.createIcons();
+    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
