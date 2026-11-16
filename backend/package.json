@@ -1,0 +1,17 @@
+{
+  "name": "raiz-digital-backend",
+  "version": "1.0.0",
+  "description": "Backend para Raiz Digital - Login e Cadastro com MySQL",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3",
+    "mysql2": "^3.9.0",
+    "dotenv": "^16.4.0"
+  }
+}

@@ -232,10 +232,15 @@ if (heroVideos.length) {
     //     mostrar("Erro de conexão. Tente novamente.", false);
     // }
 
-// simulação de cadastro sem banco
+// =====================================================
+// CADASTRO CONECTADO AO BACKEND (API REAL)
+// =====================================================
 
 const form = document.getElementById("formCadastro");
 const mensagem = document.getElementById("mensagem");
+
+// URL do backend - mude se o backend estiver em outro lugar
+const API_URL = 'http://localhost:3001';
 
 function mostrar(texto, ok) {
     if (!mensagem) return;
@@ -268,35 +273,34 @@ form.addEventListener("submit", async (evento) => {
     mostrar("Cadastrando...", true);
 
     try {
-        // Simula cadastro com localStorage (já que /api/cadastro não existe em site estático)
-        const usuarios = JSON.parse(localStorage.getItem("raizDigitalUsuarios") || "[]");
+        // Envia dados para a API real do backend
+        const resposta = await fetch(`${API_URL}/api/cadastro`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nome: form.nome.value,
+                email: form.email.value,
+                senha: senha,
+                ConfirmaSenha: confirmaSenha,
+                Contato: form.Contato.value
+            })
+        });
 
-        // Verifica se email já existe
-        if (usuarios.some(u => u.email === form.email.value)) {
-            mostrar("Este e-mail já está cadastrado.", false);
-            return;
+        const dados = await resposta.json();
+
+        if (resposta.ok) {
+            mostrar(dados.mensagem || "Cadastro realizado com sucesso!", true);
+            form.reset();
+            setTimeout(() => {
+                window.location.href = "../Login/index.html";
+            }, 1500);
+        } else {
+            mostrar(dados.erro || "Não foi possível cadastrar.", false);
         }
-
-        // Salva novo usuário (sem a senha em texto plano em produção!)
-        const novoUsuario = {
-            nome: form.nome.value,
-            email: form.email.value,
-            senha: senha, // Em produção, usar hash!
-            contato: form.Contato.value,
-            dataCadastro: new Date().toISOString()
-        };
-
-        usuarios.push(novoUsuario);
-        localStorage.setItem("raizDigitalUsuarios", JSON.stringify(usuarios));
-
-        mostrar("Cadastro realizado com sucesso!", true);
-        form.reset();
-        setTimeout(() => {
-            window.location.href = "../Login/index.html";
-        }, 1500);
-
     } catch (erro) {
         console.error(erro);
-        mostrar("Erro ao cadastrar. Tente novamente.", false);
+        mostrar("Erro de conexão com o servidor. Verifique se o backend está rodando.", false);
     }
 });

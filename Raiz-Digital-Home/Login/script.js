@@ -68,11 +68,16 @@ function sair() {
 //     botaoEntrar.addEventListener("click", fazerLogin);
 // }
 
-// login conectado ao localStorage (demo)
+// =====================================================
+// LOGIN CONECTADO AO BACKEND (API REAL)
+// =====================================================
 
 const formLogin = document.getElementById("formLogin");
 const areaMensagem = document.getElementById("mensagem");
 const botaoEntrar = document.querySelector(".botao");
+
+// URL do backend - mude se o backend estiver em outro lugar
+const API_URL = 'http://localhost:3001';
 
 function mostrarMensagem(texto, ok) {
     if (!areaMensagem) return;
@@ -80,34 +85,42 @@ function mostrarMensagem(texto, ok) {
     areaMensagem.style.color = ok ? "green" : "red";
 }
 
-function fazerLogin() {
+async function fazerLogin() {
     if (!formLogin) return;
     mostrarMensagem("Entrando...", true);
 
     try {
-        const usuarios = JSON.parse(localStorage.getItem("raizDigitalUsuarios") || "[]");
-        const email = formLogin.email.value;
-        const senha = formLogin.senha.value;
+        const resposta = await fetch(`${API_URL}/api/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: formLogin.email.value,
+                senha: formLogin.senha.value
+            })
+        });
 
-        const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+        const dados = await resposta.json();
 
-        if (usuario) {
-            // Salva sessão simples
+        if (resposta.ok) {
+            // Salva sessão no localStorage (para o frontend saber quem está logado)
             localStorage.setItem("raizDigitalUsuarioAtual", JSON.stringify({
-                nome: usuario.nome,
-                email: usuario.email
+                nome: dados.usuario.nome,
+                email: dados.usuario.email,
+                id: dados.usuario.id
             }));
 
-            mostrarMensagem("Login realizado!", true);
+            mostrarMensagem(dados.mensagem || "Login realizado!", true);
             setTimeout(() => {
                 window.location.href = "../../Home/Logado/index.html";
             }, 1000);
         } else {
-            mostrarMensagem("E-mail ou senha incorretos.", false);
+            mostrarMensagem(dados.erro || "Não foi possível entrar.", false);
         }
     } catch (erro) {
         console.error(erro);
-        mostrarMensagem("Erro ao fazer login. Tente novamente.", false);
+        mostrarMensagem("Erro de conexão com o servidor. Verifique se o backend está rodando.", false);
     }
 }
 
