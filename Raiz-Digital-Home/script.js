@@ -1,3 +1,4 @@
+
 // =====================================================
 // RAIZ DIGITAL
 // JavaScript principal
@@ -52,6 +53,7 @@ function updateActiveMenu() {
 
     menuLinks.forEach((link) => {
         const targetId = link.getAttribute("href");
+
         link.classList.toggle(
             "active",
             targetId === `#${currentSection}`
@@ -93,6 +95,7 @@ if ("IntersectionObserver" in window) {
     animatedElements.forEach((element) => {
         observer.observe(element);
     });
+
 } else {
     animatedElements.forEach((element) => {
         element.classList.add("visible");
@@ -124,10 +127,13 @@ function showHeroVideo(index) {
 
         if (isActive) {
             video.currentTime = 0;
+
             const playPromise = video.play();
+
             if (playPromise !== undefined) {
                 playPromise.catch(() => {});
             }
+
         } else {
             video.pause();
         }
@@ -135,8 +141,13 @@ function showHeroVideo(index) {
 
     heroIndicators.forEach((indicator, indicatorIndex) => {
         const isActive = indicatorIndex === currentHeroVideo;
+
         indicator.classList.toggle("active", isActive);
-        indicator.setAttribute("aria-current", isActive ? "true" : "false");
+
+        indicator.setAttribute(
+            "aria-current",
+            isActive ? "true" : "false"
+        );
     });
 
     clearTimeout(heroTimer);
@@ -158,15 +169,16 @@ if (heroVideos.length) {
 
 
 // -----------------------------------------------------
-// SIMULAÇÃO DE CADASTRO SEM BANCO
+// CADASTRO DE USUÁRIOS
+// SIMULAÇÃO SEM BANCO DE DADOS
 // -----------------------------------------------------
-
 
 const form = document.getElementById("formCadastro");
 const mensagem = document.getElementById("mensagem");
 
 function mostrar(texto, ok) {
     if (!mensagem) return;
+
     mensagem.textContent = texto;
     mensagem.style.color = ok ? "green" : "red";
 }
@@ -175,13 +187,14 @@ function validarSenhas(senha, confirmaSenha) {
     if (senha !== confirmaSenha) {
         return "As senhas não coincidem.";
     }
+
     if (senha.length < 6) {
         return "A senha deve ter pelo menos 6 caracteres.";
     }
+
     return null;
 }
 
-// CORREÇÃO 1: Verifica se o formulário existe na página atual antes de adicionar o evento
 if (form) {
     form.addEventListener("submit", async (evento) => {
         evento.preventDefault();
@@ -190,6 +203,7 @@ if (form) {
         const confirmaSenha = form.ConfirmaSenha.value;
 
         const erroSenha = validarSenhas(senha, confirmaSenha);
+
         if (erroSenha) {
             mostrar(erroSenha, false);
             return;
@@ -198,22 +212,15 @@ if (form) {
         mostrar("Cadastrando...", true);
 
         try {
-            const usuarios = JSON.parse(localStorage.getItem("raizDigitalUsuarios") || "[]");
+            const usuarios = JSON.parse(
+                localStorage.getItem("raizDigitalUsuarios") || "[]"
+            );
 
-            if (usuarios.some(u => u.email === form.email.value)) {
+            if (usuarios.some((u) => u.email === form.email.value)) {
                 mostrar("Este e-mail já está cadastrado.", false);
                 return;
             }
 
-<<<<<<< HEAD
-    } catch (erro) {
-        console.error(erro);
-        mostrar("Erro ao cadastrar. Tente novamente.", false);
-    }
-});
-
-// Expande ou recolhe as quatro árvores adicionais na Home.
-=======
             const novoUsuario = {
                 nome: form.nome.value,
                 email: form.email.value,
@@ -223,10 +230,16 @@ if (form) {
             };
 
             usuarios.push(novoUsuario);
-            localStorage.setItem("raizDigitalUsuarios", JSON.stringify(usuarios));
+
+            localStorage.setItem(
+                "raizDigitalUsuarios",
+                JSON.stringify(usuarios)
+            );
 
             mostrar("Cadastro realizado com sucesso!", true);
+
             form.reset();
+
             setTimeout(() => {
                 window.location.href = "../Login/index.html";
             }, 1500);
@@ -243,44 +256,39 @@ if (form) {
 // EXPANDIR / RECOLHER ÁRVORES EXTRAS NA HOME
 // -----------------------------------------------------
 
->>>>>>> 5dc6d7ca249c0ff797896cd2c75a72a2fd71046b
-const expandTreesButton = document.querySelector('.expand-trees');
-const extraTreesGrid = document.getElementById('arvores-extras');
+const expandTreesButton = document.querySelector(".expand-trees");
+const extraTreesGrid = document.getElementById("arvores-extras");
 
 if (expandTreesButton && extraTreesGrid) {
-<<<<<<< HEAD
-  expandTreesButton.addEventListener('click', () => {
-    const expanded = expandTreesButton.getAttribute('aria-expanded') === 'true';
-    expandTreesButton.setAttribute('aria-expanded', String(!expanded));
-    extraTreesGrid.hidden = expanded;
-    extraTreesGrid.classList.remove('is-opening');
 
-    if (!expanded) {
-      void extraTreesGrid.offsetWidth;
-      extraTreesGrid.classList.add('is-opening');
-    }
+    expandTreesButton.addEventListener("click", () => {
 
-    expandTreesButton.firstChild.textContent = expanded ? 'Ver todas as árvores ' : 'Mostrar menos árvores ';
-  });
-}
-=======
-    expandTreesButton.addEventListener('click', () => {
-        const expanded = expandTreesButton.getAttribute('aria-expanded') === 'true';
-        expandTreesButton.setAttribute('aria-expanded', String(!expanded));
+        const expanded =
+            expandTreesButton.getAttribute("aria-expanded") === "true";
+
+        expandTreesButton.setAttribute(
+            "aria-expanded",
+            String(!expanded)
+        );
+
         extraTreesGrid.hidden = expanded;
-        extraTreesGrid.classList.remove('is-opening');
+
+        extraTreesGrid.classList.remove("is-opening");
 
         if (!expanded) {
+
             void extraTreesGrid.offsetWidth;
-            extraTreesGrid.classList.add('is-opening');
-            
-            // CORREÇÃO 2: Garante que os cards extras não fiquem invisíveis por causa da classe .reveal
-            extraTreesGrid.querySelectorAll('.tree-card').forEach((card) => {
-                card.classList.add('visible');
+
+            extraTreesGrid.classList.add("is-opening");
+
+            // Garante que os cards extras fiquem visíveis
+            extraTreesGrid.querySelectorAll(".tree-card").forEach((card) => {
+                card.classList.add("visible");
             });
         }
 
-        expandTreesButton.firstChild.textContent = expanded ? 'Ver todas as árvores ' : 'Mostrar menos árvores ';
+        expandTreesButton.firstChild.textContent = expanded
+            ? "Ver todas as árvores "
+            : "Mostrar menos árvores ";
     });
 }
->>>>>>> 5dc6d7ca249c0ff797896cd2c75a72a2fd71046b
