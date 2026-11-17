@@ -17,10 +17,9 @@ body {
 }
 
 .vidro {
-    zoom: 70%;
     width: 96%;
-    max-width: 200vh;
-    min-height: 100vh;
+    max-width: 1200px;
+    min-height: 680px;
     padding: 20px;
 
     display: flex;
@@ -34,7 +33,6 @@ body {
 }
 
 .bloco {
-    zoom: 90%;
     width: 100%;
     min-height: 640px;
     position: relative;
@@ -59,19 +57,16 @@ header {
 }
 
 .text1 {
-    zoom: 130%;
     font-size: 27px;
     margin: 0;
 }
 
 .dica {
-    zoom: 150%;
     color: #3c3f44;
     font-size: 17px;
 }
 
 header p {
-    zoom: 150%;
     font-size: 17px;
     margin: 0;
 }
@@ -97,7 +92,6 @@ header img {
 
 
 .campo {
-    zoom: 120%;
     display: flex;
     flex-direction: column;
     gap: 10px;
