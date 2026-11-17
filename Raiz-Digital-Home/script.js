@@ -161,6 +161,7 @@ if (heroVideos.length) {
 // SIMULAÇÃO DE CADASTRO SEM BANCO
 // -----------------------------------------------------
 
+
 const form = document.getElementById("formCadastro");
 const mensagem = document.getElementById("mensagem");
 
@@ -204,6 +205,15 @@ if (form) {
                 return;
             }
 
+<<<<<<< HEAD
+    } catch (erro) {
+        console.error(erro);
+        mostrar("Erro ao cadastrar. Tente novamente.", false);
+    }
+});
+
+// Expande ou recolhe as quatro árvores adicionais na Home.
+=======
             const novoUsuario = {
                 nome: form.nome.value,
                 email: form.email.value,
@@ -233,10 +243,27 @@ if (form) {
 // EXPANDIR / RECOLHER ÁRVORES EXTRAS NA HOME
 // -----------------------------------------------------
 
+>>>>>>> 5dc6d7ca249c0ff797896cd2c75a72a2fd71046b
 const expandTreesButton = document.querySelector('.expand-trees');
 const extraTreesGrid = document.getElementById('arvores-extras');
 
 if (expandTreesButton && extraTreesGrid) {
+<<<<<<< HEAD
+  expandTreesButton.addEventListener('click', () => {
+    const expanded = expandTreesButton.getAttribute('aria-expanded') === 'true';
+    expandTreesButton.setAttribute('aria-expanded', String(!expanded));
+    extraTreesGrid.hidden = expanded;
+    extraTreesGrid.classList.remove('is-opening');
+
+    if (!expanded) {
+      void extraTreesGrid.offsetWidth;
+      extraTreesGrid.classList.add('is-opening');
+    }
+
+    expandTreesButton.firstChild.textContent = expanded ? 'Ver todas as árvores ' : 'Mostrar menos árvores ';
+  });
+}
+=======
     expandTreesButton.addEventListener('click', () => {
         const expanded = expandTreesButton.getAttribute('aria-expanded') === 'true';
         expandTreesButton.setAttribute('aria-expanded', String(!expanded));
@@ -256,3 +283,4 @@ if (expandTreesButton && extraTreesGrid) {
         expandTreesButton.firstChild.textContent = expanded ? 'Ver todas as árvores ' : 'Mostrar menos árvores ';
     });
 }
+>>>>>>> 5dc6d7ca249c0ff797896cd2c75a72a2fd71046b
