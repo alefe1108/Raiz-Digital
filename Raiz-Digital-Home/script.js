@@ -194,6 +194,7 @@ if (heroVideos.length) {
     showHeroVideo(0);
 }
 
+
 // -----------------------------------------------------
 // script do cadastro do netlify
 // -----------------------------------------------------
@@ -233,6 +234,7 @@ if (heroVideos.length) {
     // }
 
 // simulação de cadastro sem banco
+
 
 const form = document.getElementById("formCadastro");
 const mensagem = document.getElementById("mensagem");
@@ -300,3 +302,23 @@ form.addEventListener("submit", async (evento) => {
         mostrar("Erro ao cadastrar. Tente novamente.", false);
     }
 });
+
+// Expande ou recolhe as quatro árvores adicionais na Home.
+const expandTreesButton = document.querySelector('.expand-trees');
+const extraTreesGrid = document.getElementById('arvores-extras');
+
+if (expandTreesButton && extraTreesGrid) {
+  expandTreesButton.addEventListener('click', () => {
+    const expanded = expandTreesButton.getAttribute('aria-expanded') === 'true';
+    expandTreesButton.setAttribute('aria-expanded', String(!expanded));
+    extraTreesGrid.hidden = expanded;
+    extraTreesGrid.classList.remove('is-opening');
+
+    if (!expanded) {
+      void extraTreesGrid.offsetWidth;
+      extraTreesGrid.classList.add('is-opening');
+    }
+
+    expandTreesButton.firstChild.textContent = expanded ? 'Ver todas as árvores ' : 'Mostrar menos árvores ';
+  });
+}
