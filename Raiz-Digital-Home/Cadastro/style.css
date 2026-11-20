@@ -265,17 +265,12 @@ header img {
     }
 
     .vidro {
-        width: 96%;
-        min-height: auto;
-        padding: 10px;
-        border-radius: 35px;
+        width: 98%;
+        min-height: 450px;
     }
 
     .bloco {
-        min-height: auto;
-        padding: 80px 20px 35px;
-        gap: 24px;
-        border-radius: 30px;
+        min-height: 500px;
     }
     /* teste pra logo */
       header {
