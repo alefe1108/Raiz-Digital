@@ -298,15 +298,9 @@ header img {
     font-size: 22px;
     margin: 0;
     }
-/* teste pra logo */
-
-    header {
-        padding-right: 75px;
-    }
+    /* teste pra logo */
 
     header img {
-    width: 110px;
-    max-width: none;
     height: auto;
     top: 0;
     right: 0;
