@@ -20,7 +20,8 @@ body {
     width: 96%;
     max-width: 1200px;
     min-height: 680px;
-    padding: 20px;
+
+    padding: clamp(12px, 2vw, 20px);
 
     display: flex;
     justify-content: center;
@@ -29,23 +30,32 @@ body {
     backdrop-filter: blur(25px);
     background-color: #3532320d;
     border: 1px solid rgba(216, 210, 210, 0.473);
-    border-radius: 80px;
+
+    border-radius: clamp(25px, 5vw, 80px);
+
+    box-sizing: border-box;
 }
 
 .bloco {
     width: 100%;
     min-height: 640px;
     position: relative;
-    padding: 85px 60px 40px;
+
+    padding: clamp(25px, 5vw, 85px)
+             clamp(20px, 4vw, 60px)
+             40px;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 30px;
+
+    gap: clamp(15px, 2vw, 30px);
 
     background-color: #bdb8b8e8;
     backdrop-filter: blur(10px);
-    border-radius: 65px;
+    border-radius: clamp(25px, 4vw, 65px);
+
+    box-sizing: border-box;
 }
 
 header {
