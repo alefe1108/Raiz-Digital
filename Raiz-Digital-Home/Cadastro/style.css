@@ -277,6 +277,28 @@ header img {
         gap: 24px;
         border-radius: 30px;
     }
+    /* teste pra logo */
+      header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-right: 0;
+    gap: 10px;
+    }
+
+    header > img:not(.bola2) {
+    position: static;
+    width: 130px;
+    height: auto;
+    margin: 0 auto;
+    }
+
+    .text1 {
+    font-size: 22px;
+    margin: 0;
+    }
+/* teste pra logo */
 
     header {
         padding-right: 75px;
