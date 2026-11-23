@@ -57,7 +57,6 @@ body {
 
     box-sizing: border-box;
 }
-
 header {
     display: flex;
     flex-direction: column;
@@ -272,15 +271,6 @@ header img {
     .bloco {
         min-height: 500px;
     }
-    /* teste pra logo */
-      header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-right: 0;
-    gap: 10px;
-    }
 
     header > img:not(.bola2) {
     position: static;
@@ -301,6 +291,32 @@ header img {
     right: 0;
     }
 
+    
+    /* teste pra tela de cell */
+     header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-right: 0;
+    gap: 10px;
+    }
+
+    header > img:not(.bola2) {
+    position: static;
+    width: 130px;
+    height: auto;
+    margin: 0 auto;
+    }
+
+    .text1 {
+    font-size: 22px;
+    margin: 0;
+    }
+    /* teste pra tela de cell */
+
+    
+    
     .text1 {
         font-size: 22px;
         overflow-wrap: anywhere;
@@ -376,27 +392,27 @@ header img {
     z-index: 1;
     pointer-events: none;
     }
-}
 
-html {
+    html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-}
+    }
 
-body {
+    body {
     width: 100%;
     min-height: 100vh;
     height: auto;
     overflow-x: hidden;
     overflow-y: auto;
     margin: 0;
-}
+    }
 
-.aviso {
+    .aviso {
     padding-top: 1rem;
     color: rgba(110, 107, 107, 0.658) ;
     margin: 0;
     font-size: 1.2rem;
     white-space: nowrap;
+    }
 }

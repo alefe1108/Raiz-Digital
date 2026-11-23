@@ -192,9 +192,9 @@ img {
 
 .hero-content {
     width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 5%;
     position: relative;
     z-index: 2;
 }
@@ -1182,3 +1182,18 @@ img {
     }
 
 }
+
+/* Catálogo expandido de oito árvores */
+.expand-trees { cursor: pointer; font: inherit; border: 0; background: transparent; }
+.expand-trees span { display: inline-block; transition: transform .3s ease; }
+.expand-trees[aria-expanded="true"] span { transform: rotate(180deg); }
+.tree-grid-extra { margin-top: 24px; }
+.tree-grid-extra[hidden] { display: none !important; }
+.tree-grid-extra.is-opening { animation: reveal-trees .52s cubic-bezier(.2,.8,.25,1) both; transform-origin: top center; }
+.tree-grid-extra.is-opening .tree-card { animation: reveal-tree-card .48s ease both; }
+.tree-grid-extra.is-opening .tree-card:nth-child(2) { animation-delay: .07s; }
+.tree-grid-extra.is-opening .tree-card:nth-child(3) { animation-delay: .14s; }
+.tree-grid-extra.is-opening .tree-card:nth-child(4) { animation-delay: .21s; }
+@keyframes reveal-trees { from { opacity: 0; transform: translateY(-24px) scaleY(.95); } to { opacity: 1; transform: translateY(0) scaleY(1); } }
+@keyframes reveal-tree-card { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .tree-grid-extra.is-opening, .tree-grid-extra.is-opening .tree-card, .expand-trees span { animation: none !important; transition: none !important; } }

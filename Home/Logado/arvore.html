@@ -1,36 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Árvore | Raiz Digital</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <header class="navbar">
-        <a class="logo" href="index.html"><img src="../../img/logo.png" alt="Raiz Digital"></a>
-        <nav class="menu"><a href="index.html">Início</a><a href="index.html#arvores">Árvores da escola</a></nav>
-    </header>
-    <main class="container detail-wrap"><a class="back" href="index.html#arvores">← Voltar às árvores</a>
-        <div class="detail-card"><img id="treePhoto" src="../../img/fazenda.jpg" alt="Foto da árvore">
-            <div><span class="eyebrow">ÁRVORES DA NOSSA ESCOLA</span>
-                <h1 id="treeName">Árvore</h1>
-                <p class="scientific" id="treeScientific"></p>
-                <p id="treeDescription"></p>
-                <dl><dt>Localização</dt>
-                    <dd>Escola Monsenhor Sarrion, Presidente Prudente – SP</dd><dt>Idade</dt>
-                    <dd>Não informada</dd><dt>Identificação</dt>
-                    <dd>Provisória — confirmar a espécie com a equipe do projeto</dd>
-                </dl>
-            </div>
-        </div>
-    </main>
-    <footer><img src="../../img/logo.png" alt="Raiz Digital">
-        <p>Projeto escolar • Raiz Digital</p>
-    </footer>
-    <script src="arvores.js"></script>
-</body>
-
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="#f7faf7" name="theme-color"/>
+  <title>
+   Sobre a planta | Raiz Digital
+  </title>
+  <link href="./css/plantas.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="card">
+   <a aria-label="Voltar para o cat&aacute;logo de &aacute;rvores" class="voltar" href="./index.html#arvores">
+    &larr;
+   </a>
+   <h1>
+    Raiz Digital
+   </h1>
+  </header>
+  <div class="vidro1">
+  </div>
+  <div class="vidro2">
+  </div>
+  <main class="bloco1" id="painel-planta">
+   <div class="folha1">
+    <img alt="" aria-hidden="true" src="./assets/decor/folha.png"/>
+   </div>
+   <div class="folha">
+    <img alt="" aria-hidden="true" src="./assets/decor/folha.png"/>
+   </div>
+   <div class="foto">
+    <img alt="Fotografia da planta selecionada" id="planta-foto" src="./assets/images/arvore-01-aceroleira.jpg"/>
+   </div>
+   <div class="cuidados">
+    <div class="tipuaneira">
+     <h1 id="planta-titulo">
+     </h1>
+     <h3 id="planta-cientifico">
+     </h3>
+     <div class="localizacao">
+      &target; Escola Monsenhor Sarrion &mdash; Presidente Prudente, SP
+     </div>
+     <p id="planta-descricao">
+     </p>
+     <hr/>
+    </div>
+    <section class="card-cuidado">
+     <svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+      <path d="M12 22v-9M12 13C6 13 4 9 4 5c5 0 8 2 8 8ZM12 16c0-6 3-9 8-9 0 5-2 9-8 9Z">
+      </path>
+     </svg>
+     <h3>
+      ADUBA&Ccedil;&Atilde;O
+     </h3>
+     <p id="planta-adubacao">
+     </p>
+    </section>
+    <section class="card-cuidado">
+     <svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+      <circle cx="6" cy="6" r="3">
+      </circle>
+      <circle cx="6" cy="18" r="3">
+      </circle>
+      <path d="m8 8 12 12M14 10l6-6M8 16l12-12">
+      </path>
+     </svg>
+     <h3>
+      PODA
+     </h3>
+     <p id="planta-poda">
+     </p>
+    </section>
+    <section class="card-cuidado">
+     <svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+      <path d="M12 2C8 8 5 12 5 16a7 7 0 0 0 14 0c0-4-3-8-7-14Z">
+      </path>
+      <path d="M9 17c0 2 1 3 3 3">
+      </path>
+     </svg>
+     <h3>
+      IRRIGA&Ccedil;&Atilde;O
+     </h3>
+     <p id="planta-irrigacao">
+     </p>
+    </section>
+    <section class="card-cuidado">
+     <svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+      <circle cx="12" cy="12" r="4">
+      </circle>
+      <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4">
+      </path>
+     </svg>
+     <h3>
+      LUMINOSIDADE
+     </h3>
+     <p id="planta-luminosidade">
+     </p>
+    </section>
+   </div>
+  </main>
+  <aside aria-label="Escolha uma planta" class="escolher">
+   <p class="escolher-titulo">
+    CONHE&Ccedil;A AS PLANTAS
+   </p>
+   <button aria-label="Conhecer Aceroleira" class="planta-opcao" data-planta="aceroleira" type="button">
+    <img alt="" loading="lazy" src="./assets/images/arvore-01-aceroleira.jpg"/>
+    <span class="nome-planta">
+     ACEROLEIRA
+    </span>
+   </button>
+   <button aria-label="Conhecer Pau-de-ferro" class="planta-opcao" data-planta="pau-de-ferro" type="button">
+    <img alt="" loading="lazy" src="./assets/images/arvore-02-sibipiruna.jpg"/>
+    <span class="nome-planta">
+     PAU-DE-FERRO
+    </span>
+   </button>
+   <button aria-label="Conhecer Bananeira" class="planta-opcao" data-planta="bananeira" type="button">
+    <img alt="" loading="lazy" src="./assets/images/arvore-03-bananeira.jpg"/>
+    <span class="nome-planta">
+     BANANEIRA
+    </span>
+   </button>
+   <button aria-label="Conhecer Mangueira" class="planta-opcao" data-planta="mangueira" type="button">
+    <img alt="" loading="lazy" src="./assets/images/arvore-04-mangueira.jpg"/>
+    <span class="nome-planta">
+     MANGUEIRA
+    </span>
+   </button>
+   <button aria-label="Conhecer Mutamba (Fruta-de-macaco)" class="planta-opcao" data-planta="mutamba" type="button">
+    <img alt="" loading="lazy" src="./assets/images/arvore-05-mutamba.png"/>
+    <span class="nome-planta">
+     MUTAMBA (FRUTA-DE-MACACO)
+    </span>
+   </button>
+   <button aria-label="Conhecer Pau-brasil" class="planta-opcao" data-planta="pau-brasil" type="button">
+    <img alt="" loading="lazy" src="./assets/images/arvore-06-pau-brasil.png"/>
+    <span class="nome-planta">
+     PAU-BRASIL
+    </span>
+   </button>
+   <button aria-label="Conhecer Palmeira-real-australiana" class="planta-opcao" data-planta="palmeira-real-australiana" type="button">
+    <img alt="" loading="lazy" src="./assets/images/arvore-07-palmeira-real-australiana.png"/>
+    <span class="nome-planta">
+     PALMEIRA-REAL-AUSTRALIANA
+    </span>
+   </button>
+   <button aria-label="Conhecer Jacarand&aacute;" class="planta-opcao" data-planta="jacaranda" type="button">
+    <img alt="" loading="lazy" src="./assets/images/arvore-08-jacaranda.png"/>
+    <span class="nome-planta">
+     JACARAND&Aacute;
+    </span>
+   </button>
+  </aside>
+  <script src="./js/plant-details-data.js">
+  </script>
+  <script src="./js/plant-details.js">
+  </script>
+ </body>
 </html>
