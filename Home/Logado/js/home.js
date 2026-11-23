@@ -115,7 +115,7 @@ async function handleQR(value){
   location.href=url.href
 }
 document.querySelector('#logoutBtn')?.addEventListener('click',()=>{
-  window.location.href = "../../../Raiz-Digital-Home/index.html";
+  window.location.href = "../../../../Raiz-Digital-Home/index.html";
 });
 // Atualiza o avatar do cabeçalho usando a foto salva neste navegador.
 function updateNavProfilePhoto(){
