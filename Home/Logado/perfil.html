@@ -1,66 +1,113 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Meu perfil | Raiz Digital</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <header class="navbar">
-        <a class="logo" href="index.html"><img src="../../img/logo.png" alt="Raiz Digital"></a>
-        <nav class="menu"><a href="index.html">Início</a></nav>
-    </header>
-    <main class="container">
-        <div class="profile-page"><a class="back" href="index.html">← Voltar ao início</a>
-            <div class="profile-photo-wrap"><img id="profilePhoto" class="profile-photo" src="../../img/perfil-padrao.svg" alt="Foto do perfil">
-                <label class="profile-edit-photo" for="photoInput" title="Alterar foto" aria-label="Alterar foto">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m4 20 4.5-1 11-11a2 2 0 0 0-3-3l-11 11L4 20Z" />
-                        <path d="m14 7 3 3" />
-                    </svg>
-                </label>
-                <input id="photoInput" type="file" accept="image/png,image/jpeg,image/webp" hidden>
-            </div>
-            <h1>Meu perfil</h1>
-            <p id="photoStatus" class="photo-status" role="status"></p>
-            <p class="hint">Personalize sua foto de perfil. Os dados de cadastro ainda precisam ser conectados ao sistema de login.</p>
-            <form id="editar">
-                <label for="nome">Nome</label>
-                <input id="nome" placeholder="Nome do usuário" autocomplete="name">
-                <label for="email">E-mail</label>
-                <input id="email" type="email" placeholder="E-mail cadastrado" autocomplete="email">
-                <div class="profile-actions">
-                    <button class="primary-btn" type="submit">Salvar alterações</button>
-                    <button class="clear-btn" id="clearProfile" type="button">Limpar</button>
-                </div>
-            </form>
-            <p class="hint" id="profileSaveStatus" role="status"></p>
-        </div>
-    </main>
-    <footer><img src="../../img/logo.png" alt="Raiz Digital">
-        <p>Projeto escolar • Raiz Digital</p>
-    </footer>
-    <div class="overlay" id="cropOverlay" hidden>
-        <div class="dialog crop-dialog" role="dialog" aria-modal="true" aria-labelledby="cropTitle">
-            <button class="close" id="cropClose" type="button" aria-label="Fechar">×</button>
-            <h2 id="cropTitle">Ajustar foto de perfil</h2>
-            <p>Arraste a imagem para posicioná-la dentro do círculo.</p>
-            <div class="crop-stage" id="cropStage">
-                <canvas id="cropCanvas" width="320" height="320" aria-label="Prévia da foto com área circular de recorte"></canvas>
-                <div class="crop-circle" aria-hidden="true"></div>
-            </div>
-            <label class="zoom-label" for="cropZoom">Zoom <span id="zoomValue">100%</span></label>
-            <input id="cropZoom" class="zoom-slider" type="range" min="100" max="300" value="100" step="1">
-            <div class="crop-actions">
-                <button class="secondary-btn" type="button" id="cropCancel">Cancelar</button>
-                <button class="primary-btn" type="button" id="cropApply">Usar esta foto</button>
-            </div>
-        </div>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Meu perfil | Raiz Digital
+  </title>
+  <link href="./css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="navbar">
+   <a class="logo" href="./index.html">
+    <img alt="Raiz Digital" src="./assets/images/logo.png"/>
+   </a>
+   <nav class="menu">
+    <a href="./index.html">
+     In&iacute;cio
+    </a>
+   </nav>
+  </header>
+  <main class="container">
+   <div class="profile-page">
+    <a class="back" href="./index.html">
+     &larr; Voltar ao in&iacute;cio
+    </a>
+    <div class="profile-photo-wrap">
+     <img alt="Foto do perfil" class="profile-photo" id="profilePhoto" src="./assets/icons/perfil-padrao.svg"/>
+     <label aria-label="Alterar foto" class="profile-edit-photo" for="photoInput" title="Alterar foto">
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+       <path d="m4 20 4.5-1 11-11a2 2 0 0 0-3-3l-11 11L4 20Z">
+       </path>
+       <path d="m14 7 3 3">
+       </path>
+      </svg>
+     </label>
+     <input accept="image/png,image/jpeg,image/webp" hidden="" id="photoInput" type="file"/>
     </div>
-    <script src="perfil.js" defer></script>
-</body>
-
+    <h1>
+     Meu perfil
+    </h1>
+    <p class="photo-status" id="photoStatus" role="status">
+    </p>
+    <p class="hint">
+     Personalize sua foto de perfil. Os dados de cadastro ainda precisam ser conectados ao sistema de login.
+    </p>
+    <form id="editar">
+     <label for="nome">
+      Nome
+     </label>
+     <input autocomplete="name" id="nome" placeholder="Nome do usu&aacute;rio"/>
+     <label for="email">
+      E-mail
+     </label>
+     <input autocomplete="email" id="email" placeholder="E-mail cadastrado" type="email"/>
+     <div class="profile-actions">
+      <button class="primary-btn" type="submit">
+       Salvar altera&ccedil;&otilde;es
+      </button>
+      <button class="clear-btn" id="clearProfile" type="button">
+       Limpar
+      </button>
+     </div>
+    </form>
+    <p class="hint" id="profileSaveStatus" role="status">
+    </p>
+   </div>
+  </main>
+  <footer>
+   <img alt="Raiz Digital" src="./assets/images/logo.png"/>
+   <p>
+    Projeto escolar &bull; Raiz Digital
+   </p>
+  </footer>
+  <div class="overlay" hidden="" id="cropOverlay">
+   <div aria-labelledby="cropTitle" aria-modal="true" class="dialog crop-dialog" role="dialog">
+    <button aria-label="Fechar" class="close" id="cropClose" type="button">
+     &times;
+    </button>
+    <h2 id="cropTitle">
+     Ajustar foto de perfil
+    </h2>
+    <p>
+     Arraste a imagem para posicion&aacute;-la dentro do c&iacute;rculo.
+    </p>
+    <div class="crop-stage" id="cropStage">
+     <canvas aria-label="Pr&eacute;via da foto com &aacute;rea circular de recorte" height="320" id="cropCanvas" width="320">
+     </canvas>
+     <div aria-hidden="true" class="crop-circle">
+     </div>
+    </div>
+    <label class="zoom-label" for="cropZoom">
+     Zoom
+     <span id="zoomValue">
+      100%
+     </span>
+    </label>
+    <input class="zoom-slider" id="cropZoom" max="300" min="100" step="1" type="range" value="100"/>
+    <div class="crop-actions">
+     <button class="secondary-btn" id="cropCancel" type="button">
+      Cancelar
+     </button>
+     <button class="primary-btn" id="cropApply" type="button">
+      Usar esta foto
+     </button>
+    </div>
+   </div>
+  </div>
+  <script defer="" src="./js/profile.js">
+  </script>
+ </body>
 </html>
+

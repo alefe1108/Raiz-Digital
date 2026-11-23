@@ -1,0 +1,415 @@
+/* ================================================================
+   RAIZ DIGITAL | Sobre as plantas
+   Identidade visual: editorial botânico, leve e responsivo.
+   Estrutura original preservada: navegação lateral, painel principal,
+   fotografia, ornamentos de folhas e quatro cartões de cuidados.
+   ================================================================ */
+
+:root {
+  --forest: #173f30;
+  --forest-deep: #103225;
+  --green: #47864a;
+  --green-hover: #36733b;
+  --sage: #eaf3e9;
+  --sage-light: #f5f9f3;
+  --paper: #ffffff;
+  --muted: #617568;
+  --line: #e0e9df;
+  --shadow: 0 22px 60px rgba(24, 65, 39, 0.075);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  color: var(--forest);
+  background:
+    radial-gradient(ellipse 55% 45% at 5% 18%, rgba(173, 211, 169, .22), transparent 85%),
+    radial-gradient(ellipse 48% 48% at 100% 88%, rgba(197, 224, 185, .25), transparent 83%),
+    #f8faf7;
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+  grid-template-rows: 82px auto;
+  column-gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+  padding: 0 max(24px, calc((100vw - 1240px) / 2)) 72px;
+}
+body::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #2e713a, #6ea66a 58%, #b8d9a9);
+}
+button { font: inherit; cursor: pointer; }
+button:focus-visible { outline: 3px solid #78ac73; outline-offset: 3px; }
+[hidden] { display: none !important; }
+
+/* Cabeçalho discreto: a página continua com a identidade da Home */
+.card {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  min-width: 0;
+  height: 82px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid rgba(70, 112, 75, .12);
+}
+.card h1 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -.025em;
+}
+.card h1::after {
+  content: " / Plantas da escola";
+  color: #78907c;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.voltar {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d9e6d8;
+  border-radius: 13px;
+  background: #fff;
+  transition: transform .22s ease, background .22s ease, border-color .22s ease;
+}
+.voltar:hover { background: var(--sage); border-color: #b8d3b6; transform: translateX(-3px); }
+.voltar img { width: 25px; height: 25px; object-fit: contain; }
+
+/* Mantém a estrutura original dos painéis de vidro, agora discretos */
+.vidro1, .vidro2 { display: none; }
+
+/* Coluna esquerda — catálogo */
+.escolher {
+  grid-column: 1;
+  grid-row: 2;
+  position: sticky;
+  top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin-top: 32px;
+  padding: 22px 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 23px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 12px 38px rgba(23, 63, 48, .055);
+  animation: fade-up .55s ease both;
+}
+.escolher-titulo {
+  margin: 0 10px 13px;
+  color: #58865b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+.escolher-titulo::after {
+  content: "";
+  display: block;
+  width: 35px;
+  height: 3px;
+  margin-top: 13px;
+  border-radius: 5px;
+  background: #79ae75;
+}
+.planta-opcao {
+  width: 100%;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px;
+  text-align: left;
+  color: #345342;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: transparent;
+  transition: background .23s ease, border-color .23s ease, transform .23s ease, box-shadow .23s ease;
+}
+.planta-opcao:hover { background: #f1f7ef; transform: translateX(3px); }
+.planta-opcao.planta-ativa {
+  background: #eaf4e8;
+  border-color: #cfe4cb;
+  box-shadow: inset 3px 0 0 #4d914b;
+}
+.planta-opcao img {
+  width: 57px;
+  height: 57px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 11px;
+}
+.nome-planta { font-size: 12px; font-weight: 700; line-height: 1.35; letter-spacing: .012em; }
+
+/* Painel principal — fotografia grande e informação editorial */
+.bloco1 {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  position: relative;
+  margin-top: 32px;
+  padding: clamp(20px, 3vw, 34px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 27px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  animation: fade-up .65s .07s ease both;
+}
+.bloco1::before {
+  content: "HERBÁRIO ESCOLAR";
+  display: block;
+  color: #59885d;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .17em;
+  margin: 0 0 17px;
+}
+.foto {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 19px;
+  background: #dce9d8;
+}
+.foto::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 0;
+  background: linear-gradient(transparent, rgba(12, 42, 27, .11));
+  pointer-events: none;
+}
+.foto img {
+  display: block;
+  width: 100%;
+  height: clamp(265px, 33vw, 390px);
+  object-fit: cover;
+  object-position: center;
+  transition: transform .65s ease, opacity .3s ease;
+}
+.foto:hover img { transform: scale(1.025); }
+
+/* Folhas do trabalho original, agora como marca d'água discreta */
+.folha, .folha1 {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .085;
+}
+.folha { top: 26px; right: -24px; transform: rotate(12deg); }
+.folha1 { bottom: 90px; right: -48px; transform: rotate(-15deg); }
+.folha img { width: 135px; }
+.folha1 img { width: 175px; }
+
+/* Informações e cuidados */
+.cuidados {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 28px;
+}
+.tipuaneira {
+  grid-column: 1 / -1;
+  position: relative;
+  padding-bottom: 11px;
+}
+.tipuaneira h1 {
+  margin: 0 0 7px;
+  color: var(--forest-deep);
+  font-size: clamp(29px, 3.3vw, 43px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -.045em;
+}
+.tipuaneira h3 {
+  margin: 0 0 16px;
+  color: #718a76;
+  font-size: 13px;
+  font-weight: 550;
+  font-style: italic;
+  letter-spacing: .025em;
+}
+.localizacao {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  padding: 9px 13px;
+  border: 1px solid #dcebd9;
+  border-radius: 100px;
+  background: #f0f7ee;
+  color: #46764b;
+  font-size: 12px;
+  font-weight: 650;
+}
+.localizacao svg { width: 15px; height: 15px; flex-shrink: 0; }
+.tipuaneira p {
+  max-width: 68ch;
+  margin: 0;
+  color: #586f61;
+  font-size: 14px;
+  line-height: 1.85;
+}
+.tipuaneira hr {
+  height: 1px;
+  margin: 25px 0 6px;
+  border: 0;
+  background: #e7ede6;
+}
+.tipuaneira::after {
+  content: "CUIDADOS COM A PLANTA";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  color: #78967a;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+.card-cuidado {
+  min-height: 162px;
+  padding: 23px 22px;
+  border: 1px solid #e3eee0;
+  border-radius: 17px;
+  background: #f6faf4;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card-cuidado:hover {
+  transform: translateY(-4px);
+  border-color: #c9dfc5;
+  box-shadow: 0 12px 26px rgba(27, 77, 38, .065);
+}
+.card-cuidado svg {
+  width: 24px;
+  height: 24px;
+  color: #548b53;
+  stroke-width: 1.8;
+}
+.card-cuidado h3 {
+  margin: 13px 0 9px;
+  color: #2f663a;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .065em;
+}
+.card-cuidado p {
+  margin: 0;
+  color: #617568;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Animações sutis e consistentes */
+.bloco1.planta-trocando .foto img,
+.bloco1.planta-trocando .tipuaneira,
+.bloco1.planta-trocando .card-cuidado {
+  animation: content-in .36s ease both;
+}
+.bloco1.planta-trocando .card-cuidado:nth-child(2) { animation-delay: .045s; }
+.bloco1.planta-trocando .card-cuidado:nth-child(3) { animation-delay: .075s; }
+.bloco1.planta-trocando .card-cuidado:nth-child(4) { animation-delay: .1s; }
+.bloco1.planta-trocando .card-cuidado:nth-child(5) { animation-delay: .125s; }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(13px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes content-in {
+  from { opacity: .45; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tablet e celular */
+@media (max-width: 940px) {
+  body {
+    grid-template-columns: 220px minmax(0, 1fr);
+    column-gap: 18px;
+    padding-inline: 18px;
+  }
+  .escolher { padding: 18px 10px; }
+  .planta-opcao { gap: 8px; }
+  .planta-opcao img { width: 46px; height: 48px; }
+  .nome-planta { font-size: 11px; }
+  .bloco1 { padding: 22px; }
+}
+@media (max-width: 700px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 16px 40px;
+  }
+  .card { width: 100%; height: 72px; flex-shrink: 0; }
+  .card h1 { font-size: 18px; }
+  .card h1::after { font-size: 11px; }
+  .escolher {
+    order: 1;
+    position: relative;
+    top: auto;
+    width: 100%;
+    margin-top: 18px;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 12px;
+    border-radius: 17px;
+    scrollbar-width: thin;
+  }
+  .escolher-titulo { display: none; }
+  .planta-opcao {
+    min-width: 118px;
+    max-width: 118px;
+    min-height: 0;
+    flex-direction: column;
+    text-align: center;
+    gap: 7px;
+    padding: 8px;
+  }
+  .planta-opcao img { width: 100%; height: 76px; }
+  .nome-planta { font-size: 10px; }
+  .bloco1 { order: 2; width: 100%; margin-top: 17px; padding: 17px; border-radius: 20px; }
+  .foto img { height: 275px; }
+  .cuidados { margin-top: 23px; gap: 11px; }
+  .tipuaneira h1 { font-size: 31px; }
+  .card-cuidado { padding: 17px; }
+  .folha, .folha1 { display: none; }
+}
+@media (max-width: 450px) {
+  .card h1::after { display: none; }
+  .foto img { height: 235px; }
+  .cuidados { grid-template-columns: 1fr; }
+  .tipuaneira { grid-column: 1; }
+  .card-cuidado { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* Integração com o catálogo de oito plantas */
+.voltar {
+  text-decoration: none;
+  color: var(--forest);
+  font-size: 24px;
+  font-weight: 500;
+}
+.escolher { max-height: calc(100vh - 54px); overflow-y: auto; scrollbar-width: thin; }
+.planta-opcao { flex-shrink: 0; }
+@media (max-width: 700px) {
+  .escolher { max-height: none; overflow-x: auto; overflow-y: hidden; }
+}
