@@ -721,3 +721,312 @@ header nav a {
         border-radius: 10px;
     }
 }
+
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        width: 100%;
+        min-height: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+    }
+
+
+    .card1 {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: 85px;
+        padding: 10px 25px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 15px;
+        border-radius: 0 0 20px 20px;
+        z-index: 10;
+    }
+
+    .nome {
+        position: static;
+        transform: none;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 18px;
+
+        flex-shrink: 0;
+    }
+
+    .nome a {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .logo {
+        position: static;
+        transform: none;
+        flex-shrink: 0;
+    }
+
+    .logo img {
+        width: 110px;
+        max-height: 65px;
+        object-fit: contain;
+    }
+
+    .folha3 {
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .folha3 img {
+        width: 110px;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .vidro {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+
+        width: 94%;
+        height: auto;
+        margin: 35px auto 25px;
+        padding: 18px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        border-radius: 25px;
+    }
+
+    .bloco {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+
+        width: 100%;
+        height: auto;
+        min-height: 380px;
+
+        padding: 30px 25px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+
+        border-radius: 22px;
+    }
+
+
+    .textos {
+        position: relative;
+        width: 65%;
+        min-width: 0;
+        flex: 1;
+    }
+
+    .titulo {
+        width: 100%;
+        height: auto;
+        margin: 0 0 20px;
+
+        font-size: clamp(21px, 2.7vw, 28px);
+        line-height: 1.3;
+        overflow-wrap: break-word;
+    }
+
+    .text {
+        width: 100%;
+        font-size: 15px;
+        line-height: 1.8;
+        text-align: justify;
+        overflow-wrap: break-word;
+    }
+
+    .text br {
+        display: none;
+    }
+
+
+    .agua {
+        position: relative;
+        top: auto;
+        left: auto;
+
+        width: 35%;
+        height: auto;
+        flex-shrink: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .agua img {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .folha1 {
+        position: relative;
+        top: auto;
+        left: auto;
+
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        justify-content: center;
+    }
+
+    .folha1 img {
+        width: 130px;
+        height: auto;
+    }
+
+
+    .adm {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+
+        width: 94%;
+        height: auto;
+        margin: 30px auto 40px;
+        padding: 30px 25px;
+
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: center;
+        justify-items: center;
+        gap: 25px 20px;
+
+        border-radius: 25px;
+    }
+
+    .adm h2 {
+        grid-column: 1 / -1;
+
+        width: 100%;
+        margin: 0 0 10px;
+
+        font-size: 27px;
+        text-align: center;
+    }
+
+    .folha2 {
+        display: none;
+    }
+
+
+    .adms-ale,
+    .adms-ped,
+    .adms-sam,
+    .adms-vic {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+
+        width: 100%;
+        max-width: 430px;
+        min-width: 0;
+        min-height: 90px;
+        height: auto;
+
+        margin: 0;
+        padding: 18px 12px 12px 75px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 22px;
+    }
+
+    .adms-ale p,
+    .adms-ped p,
+    .adms-sam p,
+    .adms-vic p {
+        width: 100%;
+        margin: 0;
+
+        font-size: 13px;
+        line-height: 1.4;
+        text-align: center;
+
+        overflow-wrap: anywhere;
+    }
+
+
+    .foto-ale,
+    .foto-ped,
+    .foto-sam,
+    .foto-vic {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+
+        width: 52px;
+        height: 52px;
+
+        padding: 0;
+        border-radius: 50%;
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+    .func-ale,
+    .func-ped,
+    .func-vic,
+    .func-sam {
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: max-content;
+        max-width: 95%;
+        min-width: 120px;
+        height: auto;
+        min-height: 19px;
+
+        padding: 3px 9px;
+
+        font-size: 10px;
+        text-align: center;
+        white-space: nowrap;
+        border-radius: 15px;
+    }
+
+}
+
