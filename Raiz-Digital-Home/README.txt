@@ -20,3 +20,6 @@ Também há comentários no HTML indicando onde fazer essas alterações.
 
 A página de "Sobre o projeto" e o sistema real de login/cadastro ainda
 podem ser conectados depois, quando essas partes estiverem prontas.
+
+
+Atualização: catálogo com 8 árvores, 4 adicionais expandidas pelo botão "Ver todas as árvores". Cada cartão leva a detalhes/arvore.html com o ID correspondente. As fotografias vêm do projeto Pós Login e não foram alteradas.

@@ -1,83 +1,11 @@
-// redirecionamento simples
-
-function voltarPagina() {
-    history.back();
-};
-
-function receberCodigo() {
-    window.location.href = "./receber-código/index.html"
-};
-
-function novaSenha() {
-    window.location.href = "./nova-senha/index.html"
-};
-
-function login() {
-    window.location.href = "../../../index.html"
-};
-
-function sair() {
-    window.location.href = "../"
-};
-
-
-// // login conectado ao banco de dados
-
-// const formLogin = document.getElementById("formLogin");
-// const areaMensagem = document.getElementById("mensagem");
-// const botaoEntrar = document.querySelector(".botao");
-
-// function mostrarMensagem(texto, ok) {
-//     if (!areaMensagem) return;
-//     areaMensagem.textContent = texto;
-//     areaMensagem.style.color = ok ? "green" : "red";
-// }
-
-// async function fazerLogin() {
-//     if (!formLogin) return;
-//     mostrarMensagem("Entrando...", true);
-
-//     try {
-//         const resposta = await fetch("/api/login", {
-//             method: "POST",
-//             body: new FormData(formLogin),
-//         });
-//         const dados = await resposta.json();
-
-//         if (resposta.ok) {
-//             mostrarMensagem(dados.mensagem || "Login realizado!", true);
-
-//             window.location.href = "../../Home/Logado/index.html";
-//         } else {
-//             mostrarMensagem(dados.erro || "Não foi possível entrar.", false);
-//         }
-//     } catch (erro) {
-//         console.error(erro);
-//         mostrarMensagem("Erro de conexão. Tente novamente.", false);
-//     }
-// }
-
-// if (formLogin) {
-//     formLogin.addEventListener("submit", (evento) => {
-//         evento.preventDefault();
-//         fazerLogin();
-//     });
-// }
-
-// if (botaoEntrar) {
-//     botaoEntrar.addEventListener("click", fazerLogin);
-// }
-
-// =====================================================
-// LOGIN CONECTADO AO BACKEND (API REAL)
-// =====================================================
+// Login conectado ao backend (API)
 
 const formLogin = document.getElementById("formLogin");
 const areaMensagem = document.getElementById("mensagem");
 const botaoEntrar = document.querySelector(".botao");
 
-// URL do backend - mude se o backend estiver em outro lugar
-const API_URL = 'http://localhost:3001';
+// URL base da API - ajuste conforme necessário
+const API_BASE = 'http://localhost:3001/api';
 
 function mostrarMensagem(texto, ok) {
     if (!areaMensagem) return;
@@ -90,37 +18,38 @@ async function fazerLogin() {
     mostrarMensagem("Entrando...", true);
 
     try {
-        const resposta = await fetch(`${API_URL}/api/login`, {
-            method: 'POST',
+        const formData = new FormData(formLogin);
+        const dados = {
+            email: formData.get('email'),
+            senha: formData.get('senha')
+        };
+
+        const resposta = await fetch(`${API_BASE}/login`, {
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                email: formLogin.email.value,
-                senha: formLogin.senha.value
-            })
+            body: JSON.stringify(dados)
         });
 
-        const dados = await resposta.json();
+        const resultado = await resposta.json();
 
         if (resposta.ok) {
-            // Salva sessão no localStorage (para o frontend saber quem está logado)
-            localStorage.setItem("raizDigitalUsuarioAtual", JSON.stringify({
-                nome: dados.usuario.nome,
-                email: dados.usuario.email,
-                id: dados.usuario.id
-            }));
+            mostrarMensagem(resultado.mensagem || "Login realizado!", true);
 
-            mostrarMensagem(dados.mensagem || "Login realizado!", true);
+            // Salva token e dados do usuário no localStorage
+            localStorage.setItem("raizDigitalToken", resultado.token);
+            localStorage.setItem("raizDigitalUsuario", JSON.stringify(resultado.usuario));
+
             setTimeout(() => {
                 window.location.href = "../../Home/Logado/index.html";
             }, 1000);
         } else {
-            mostrarMensagem(dados.erro || "Não foi possível entrar.", false);
+            mostrarMensagem(resultado.erro || "Não foi possível entrar.", false);
         }
     } catch (erro) {
         console.error(erro);
-        mostrarMensagem("Erro de conexão com o servidor. Verifique se o backend está rodando.", false);
+        mostrarMensagem("Erro de conexão. Verifique se o backend está rodando.", false);
     }
 }
 
@@ -135,7 +64,12 @@ if (botaoEntrar) {
     botaoEntrar.addEventListener("click", fazerLogin);
 }
 
-//codigo secreto para erro de conexão
+// Função para voltar à página anterior
+function voltarPagina() {
+    window.history.back();
+}
+
+// Código secreto (Konami code) para acesso direto (mantido para compatibilidade)
 const codigoSecreto = [
     "ArrowUp",
     "ArrowUp",

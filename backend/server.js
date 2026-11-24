@@ -3,17 +3,20 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const mysql = require('mysql2/promise');
 const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
 
 // Carrega variáveis de ambiente do .env
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const JWT_SECRET = process.env.JWT_SECRET || 'raiz-digital-secret-key-change-in-production';
+const JWT_EXPIRES_IN = '7d';
 
 // Middleware
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // =====================================================
 // CONEXÃO COM MYSQL (Pool de conexões)
@@ -54,9 +57,31 @@ async function inicializarBanco() {
         email VARCHAR(150) UNIQUE NOT NULL,
         senha VARCHAR(255) NOT NULL,
         contato VARCHAR(20),
+        foto_perfil LONGTEXT,
         data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     `);
+
+    // Adiciona colunas que podem faltar em bancos existentes (compatível com MySQL 5.7+)
+    const colunasParaAdicionar = [
+      { nome: 'foto_perfil', definicao: 'LONGTEXT' },
+      { nome: 'data_cadastro', definicao: 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP' }
+    ];
+
+    for (const coluna of colunasParaAdicionar) {
+      try {
+        await pool.query(`ALTER TABLE usuarios ADD COLUMN ${coluna.nome} ${coluna.definicao}`);
+        console.log(`✅ Coluna "${coluna.nome}" adicionada`);
+      } catch (alterError) {
+        // Ignora erro se coluna já existe (erro 1060 = Duplicate column name)
+        if (alterError.code !== 'ER_DUP_FIELDNAME' && alterError.errno !== 1060) {
+          console.error(`❌ Erro ao adicionar coluna ${coluna.nome}:`, alterError.message);
+        } else {
+          console.log(`ℹ️ Coluna "${coluna.nome}" já existe`);
+        }
+      }
+    }
+
     console.log('✅ Tabela "usuarios" verificada/criada');
   } catch (erro) {
     console.error('❌ Erro ao criar tabela:', erro.message);
@@ -153,7 +178,8 @@ app.post('/api/login', async (req, res) => {
 
     res.json({
       mensagem: 'Login realizado com sucesso!',
-      usuario: usuarioSeguro
+      usuario: usuarioSeguro,
+      token: jwt.sign({ id: usuario.id, email: usuario.email }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN })
     });
 
   } catch (erro) {
@@ -162,6 +188,103 @@ app.post('/api/login', async (req, res) => {
     res.status(500).json({ erro: 'Erro interno do servidor.' });
   }
 });
+
+// Middleware de autenticação JWT
+function autenticarToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+
+  if (!token) {
+    return res.status(401).json({ erro: 'Token de acesso não fornecido.' });
+  }
+
+  jwt.verify(token, JWT_SECRET, (err, usuario) => {
+    if (err) {
+      return res.status(403).json({ erro: 'Token inválido ou expirado.' });
+    }
+    req.usuario = usuario;
+    next();
+  });
+}
+
+// GET /api/perfil - Obter perfil do usuário logado
+app.get('/api/perfil', autenticarToken, async (req, res) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const [usuarios] = await conn.query(
+      'SELECT id, nome, email, contato, foto_perfil, data_cadastro FROM usuarios WHERE id = ?',
+      [req.usuario.id]
+    );
+    conn.release();
+
+    if (usuarios.length === 0) {
+      return res.status(404).json({ erro: 'Usuário não encontrado.' });
+    }
+
+    res.json({ usuario: usuarios[0] });
+  } catch (erro) {
+    if (conn) conn.release();
+    console.error('❌ Erro ao buscar perfil:', erro);
+    res.status(500).json({ erro: 'Erro interno do servidor.' });
+  }
+});
+
+// PUT /api/perfil - Atualizar perfil do usuário logado
+app.put('/api/perfil', autenticarToken, async (req, res) => {
+  let conn;
+  try {
+    const { nome, email, foto_perfil } = req.body;
+
+    if (!nome || !email) {
+      return res.status(400).json({ erro: 'Nome e email são obrigatórios.' });
+    }
+
+    conn = await pool.getConnection();
+
+    // Verifica se o email já está em uso por outro usuário
+    const [existe] = await conn.query('SELECT id FROM usuarios WHERE email = ? AND id != ?', [email, req.usuario.id]);
+    if (existe.length > 0) {
+      conn.release();
+      return res.status(400).json({ erro: 'Este e-mail já está cadastrado por outro usuário.' });
+    }
+
+    // Atualiza o perfil
+    let query = 'UPDATE usuarios SET nome = ?, email = ?';
+    let params = [nome, email];
+
+    if (foto_perfil) {
+      query += ', foto_perfil = ?';
+      params.push(foto_perfil);
+    }
+
+    query += ' WHERE id = ?';
+    params.push(req.usuario.id);
+
+    await conn.query(query, params);
+    conn.release();
+
+    // Retorna o usuário atualizado
+    const [usuarios] = await pool.query(
+      'SELECT id, nome, email, contato, foto_perfil, data_cadastro FROM usuarios WHERE id = ?',
+      [req.usuario.id]
+    );
+
+    console.log('✅ Perfil atualizado:', { id: req.usuario.id, nome, email });
+
+    res.json({
+      mensagem: 'Perfil atualizado com sucesso!',
+      usuario: usuarios[0]
+    });
+
+  } catch (erro) {
+    if (conn) conn.release();
+    console.error('❌ Erro ao atualizar perfil:', erro);
+    res.status(500).json({ erro: 'Erro interno do servidor.' });
+  }
+});
+
+// GET /api/usuarios - Listar todos (debug)
 
 // GET /api/usuarios - Listar todos (debug)
 app.get('/api/usuarios', async (req, res) => {
