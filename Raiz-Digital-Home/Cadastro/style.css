@@ -5,21 +5,48 @@
     box-sizing: border-box;
 }
 
+html {
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 body {
+    width: 100%;
     min-height: 100vh;
-    background-image: url(../../img/nofocktree.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+    height: auto;
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .vidro {
     width: 96%;
     max-width: 1200px;
     min-height: 680px;
+    height: auto;
 
     padding: clamp(12px, 2vw, 20px);
 
@@ -32,13 +59,12 @@ body {
     border: 1px solid rgba(216, 210, 210, 0.473);
 
     border-radius: clamp(25px, 5vw, 80px);
-
-    box-sizing: border-box;
 }
 
 .bloco {
     width: 100%;
     min-height: 640px;
+    height: auto;
     position: relative;
 
     padding: clamp(25px, 5vw, 85px)
@@ -54,15 +80,18 @@ body {
     background-color: #bdb8b8e8;
     backdrop-filter: blur(10px);
     border-radius: clamp(25px, 4vw, 65px);
-
-    box-sizing: border-box;
 }
+
+
 header {
+    position: relative;
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
     gap: 12px;
-    width: 100%;
 }
 
 .text1 {
@@ -80,15 +109,6 @@ header p {
     margin: 0;
 }
 
-header {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-}
-
 header img {
     position: absolute;
     top: 0;
@@ -99,11 +119,11 @@ header img {
     object-fit: contain;
 }
 
-
 .campo {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
     width: 100%;
     max-width: 450px;
 }
@@ -120,6 +140,7 @@ header img {
     border: 1px solid #aaa;
     border-radius: 10px;
     outline: none;
+
     font-size: 15px;
 }
 
@@ -127,38 +148,8 @@ header img {
     border-color: #454040;
 }
 
-.recuperar {
-    font-size: 14px;
-    color: #346e2f;
-    text-decoration: none;
-    align-self: flex-start;
-}
 
-.recuperar:hover {
-    text-decoration: underline;
-}
-.divisor {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-    max-width: 450px;
-}
-
-.divisor span {
-    flex: 1;
-    height: 1px;
-    background-color: #8a8484;
-}
-
-.divisor p {
-    color: rgba(110, 107, 107, 0.658) ;
-    margin: 0;
-    font-size: 14px;
-    white-space: nowrap;
-}
-
-
+.recuperar,
 .cadastro {
     font-size: 14px;
     color: #346e2f;
@@ -166,6 +157,7 @@ header img {
     align-self: flex-start;
 }
 
+.recuperar:hover,
 .cadastro:hover {
     text-decoration: underline;
 }
@@ -177,10 +169,34 @@ header img {
     align-self: flex-start;
 }
 
+.divisor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    width: 100%;
+    max-width: 450px;
+}
+
+.divisor span {
+    flex: 1;
+    height: 1px;
+    background-color: #8a8484;
+}
+
+.divisor p {
+    color: rgba(110, 107, 107, 0.658);
+    margin: 0;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+
+
 .botao {
     width: 100%;
     max-width: 410px;
-    height: 45px;
+    min-height: 45px;
 
     background-color: #06CB02;
     color: white;
@@ -197,6 +213,7 @@ header img {
 .botao:hover {
     background-color: #11570b;
 }
+
 .voltar {
     position: absolute;
     top: 19px;
@@ -214,13 +231,14 @@ header img {
     object-fit: contain;
 }
 
+
 .bloco header,
 .bloco .campo,
 .bloco .divisor,
-.bloco > a
-.cadastro,
-.conta,
-.botao {
+.bloco > a,
+.bloco .cadastro,
+.bloco .conta,
+.bloco .botao {
     margin-left: 30px;
 }
 
@@ -239,7 +257,7 @@ header img {
 .bola1 {
     position: fixed;
     right: 0;
-    bottom: -0;
+    bottom: 0;
 
     width: 490px;
     height: auto;
@@ -247,76 +265,64 @@ header img {
     z-index: 10;
     pointer-events: none;
 }
+
 .bola2 {
     position: fixed;
     left: -220px;
     top: 390px;
+
     width: 290px;
     height: auto;
+
     z-index: 1;
     pointer-events: none;
 }
 
+.aviso {
+    padding-top: 1rem;
+    color: rgba(110, 107, 107, 0.658);
+    margin: 0;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+
 @media (max-width: 768px) {
+
     body {
         padding: 20px 0;
+        justify-content: flex-start;
         background-position: center;
     }
 
     .vidro {
         width: 98%;
-        min-height: 450px;
+        min-height: auto;
+        height: auto;
     }
 
     .bloco {
         min-height: 500px;
+        height: auto;
+        padding: 65px 20px 30px;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-right: 0;
+        gap: 10px;
     }
 
     header > img:not(.bola2) {
-    position: static;
-    width: 130px;
-    height: auto;
-    margin: 0 auto;
+        position: static;
+        width: 140px;
+        height: auto;
+        margin: 0 auto;
     }
 
-    .text1 {
-    font-size: 22px;
-    margin: 0;
-    }
-    /* teste pra logo */
-
-    header img {
-    height: auto;
-    top: 0;
-    right: 0;
-    }
-
-    
-    /* teste pra tela de cell */
-     header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-right: 0;
-    gap: 10px;
-    }
-
-    header > img:not(.bola2) {
-    position: static;
-    width: 130px;
-    height: auto;
-    margin: 0 auto;
-    }
-
-    .text1 {
-    font-size: 22px;
-    margin: 0;
-    }
-    /* teste pra tela de cell */
-
-    
-    
     .text1 {
         font-size: 22px;
         overflow-wrap: anywhere;
@@ -326,6 +332,7 @@ header img {
     header p {
         font-size: 15px;
     }
+
 
     .campo,
     .divisor {
@@ -352,6 +359,7 @@ header img {
         height: 30px;
     }
 
+
     .bloco header,
     .bloco .campo,
     .bloco .divisor,
@@ -362,57 +370,45 @@ header img {
         margin-left: 0;
     }
 
+    /* DECORAÇÃO */
+
     .agua {
         position: fixed;
         right: 10px;
         bottom: 90px;
+
         width: 75px;
         height: auto;
+
         z-index: 2;
         pointer-events: none;
     }
 
     .bola1 {
-    position: fixed;
-    right: -55px;
-    bottom: -30px;
-    width: 260px;
-    height: auto;
-    z-index: 1;
-    pointer-events: none;
+        position: absolute;
+        right: -81px;
+        bottom: -30px;
+        width: 260px;
+        height: auto;
+        z-index: 1;
+        pointer-events: none;
     }
 
     .bola2 {
-    position: fixed;
-    left: 12px;
-    top: -19%;
-    bottom: auto;
-    width: 200px;
-    height: auto;
-    z-index: 1;
-    pointer-events: none;
-    }
+        position: fixed;
+        left: 12px;
+        top: -49%;
+        bottom: auto;
 
-    html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    }
+        width: 200px;
+        height: auto;
 
-    body {
-    width: 100%;
-    min-height: 100vh;
-    height: auto;
-    overflow-x: hidden;
-    overflow-y: auto;
-    margin: 0;
+        z-index: 1;
+        pointer-events: none;
     }
 
     .aviso {
-    padding-top: 1rem;
-    color: rgba(110, 107, 107, 0.658) ;
-    margin: 0;
-    font-size: 1.2rem;
-    white-space: nowrap;
+        font-size: 13px;
+        white-space: normal;
     }
 }
