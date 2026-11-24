@@ -235,7 +235,7 @@ header nav a {
 
     border-radius: 50%;
 
-    background-image: url("Alefe foto.jpeg");
+    background-image: url("../../img/Alefe foto.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -303,7 +303,7 @@ header nav a {
     box-sizing: border-box;
     border-radius: 100px;
     background-color: #0b0e0a;
-    background-image: url("Pedro foto.jpeg");
+    background-image: url("../../img/Pedro foto.jpeg");
 }
 
 .adms-sam {
@@ -370,7 +370,7 @@ header nav a {
     box-sizing: border-box;
     border-radius: 100px;
     background-color: #0b0e0a;
-    background-image: url("Samuel foto.jpeg");
+    background-image: url("../../img/Samuel foto.jpeg");
 }
 
 .adms-vic {
@@ -434,7 +434,7 @@ header nav a {
 
     border-radius: 50%;
 
-    background-image: url("Victor foto.jpeg");
+    background-image: url("../../img/Victor foto.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
